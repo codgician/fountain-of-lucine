@@ -1,0 +1,35 @@
+name: build
+
+on:
+  schedule:
+  - cron: '0 8 * * 3'
+  workflow_dispatch:
+
+permissions:
+  contents: build
+ 
+jobs:
+  evergreen:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone 
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: 'true'
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Check flake
+        run: nix flake check
+      - name: Build images
+        run: |
+          nix build .#lumidouce
+      - name: Upload to release
+        uses: xresloader/upload-to-github-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          file: "result/**/*.img.gz;result/**/*.json;result/**/sha256sums"
+          overwrite: true
+          update_latest_release: true
+          default_release_name: "Weekly build"
+          draft: true
