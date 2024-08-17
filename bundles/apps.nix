@@ -1,0 +1,32 @@
+{ lib, release, ... }:
+
+[
+  "luci-app-homeproxy"
+  "luci-i18n-homeproxy-zh-cn"
+  "luci-app-autoreboot"
+  "luci-i18n-autoreboot-zh-cn"
+  "luci-app-acl"
+  "luci-i18n-acl-zh-cn"
+  "luci-app-upnp"
+  "luci-i18n-upnp-zh-cn"
+  "luci-app-acme"
+  "luci-i18n-acme-zh-cn"
+  "acme-acmesh-dnsapi"
+  "luci-app-ddns"
+  "luci-i18n-ddns-zh-cn"
+  "ddns-scripts-cloudflare"
+  "bind-host"
+  "luci-app-wol"
+  "luci-i18n-wol-zh-cn"
+  "luci-app-banip"
+  "luci-i18n-banip-zh-cn"
+  "luci-app-watchcat"
+  "luci-i18n-watchcat-zh-cn"
+  "luci-app-uhttpd"
+  "luci-i18n-uhttpd-zh-cn"
+  "luci-app-sqm"
+  "luci-i18n-sqm-zh-cn"
+] ++ (lib.optionals (release == "snapshot" || lib.versionAtLeast release "24.00") [
+  "luci-app-irqbalance"
+  "luci-i18n-irqbalance-zh-cn"
+])
