@@ -1,6 +1,11 @@
 name: build
 
 on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '**.md'
+      - '.gitignore'
   schedule:
   - cron: '0 8 * * 3'
   workflow_dispatch:
@@ -24,7 +29,7 @@ jobs:
       - name: Get routers
         id: get_routers
         run: |
-          result = $(nix eval .#packages.x86_64-linux --apply "x: builtins.toJSON (builtins.attrNames x)" --raw)
+          result=$(nix eval .#packages.x86_64-linux --apply "x: builtins.toJSON (builtins.attrNames x)" --raw)
           echo "routers=${result}" >> $GITHUB_OUTPUT
           echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
