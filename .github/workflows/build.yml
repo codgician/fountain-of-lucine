@@ -51,7 +51,7 @@ jobs:
       - name: Create archive
         run: |
           mkdir -p ./release
-          find ./result/ -name "*squashfs*.img.gz" -exec cp '{}' ./release \;
+          find ./result/ -name "*squashfs*" -exec cp '{}' ./release \;
           cp ./result/profiles.json ./release
           cp ./result/sha256sums ./release
           tar -czvf ${{ matrix.router }}.tar.gz ./release
