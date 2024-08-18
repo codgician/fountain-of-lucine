@@ -48,18 +48,22 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Build image for ${{ matrix.router }}
         run: nix build .#${{ matrix.router }}
-      - name: Rename files
+      - name: Create archive
         run: |
-          cp ./result/profiles.json ./profiles-${{ matrix.router }}.json
-          cp ./result/sha256sums ./sha256sums-${{ matrix.router }}
+          mkdir -p ./release
+          find ./result/ -name "*squashfs*.img.gz" -exec cp '{}' ./release \;
+          cp ./result/profiles.json ./release
+          cp ./result/sha256sums ./release
+          tar -czvf ${{ matrix.router }}.tar.gz ./release
       - name: Upload release for ${{ matrix.router }}
         uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: "result/*squashfs*.img.gz;result/profiles.json;result/sha256sums"
+          file: "*.tar.gz"
           overwrite: true
-          update_latest_release: false
-          default_release_name: "Weekly build: ${{ matrix.router }}"
-          update_release_body: "${{ needs.setup.outputs.date }}"
+          update_latest_release: true
+          default_release_name: "Weekly build: ${{ needs.setup.outputs.date }}"
+          update_release_body: |
+            Please untar the tarball of each device to see built images.
           draft: false
