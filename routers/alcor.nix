@@ -1,10 +1,10 @@
-# x86_64 router
+# GL.iNet XE3000
 { pkgs, lib, build, bundles, ... }:
 
 let
-  baremetal = false;
-  target = "x86";
-  variant = "64";
+  baremetal = true;
+  target = "mediatek";
+  variant = "filogic";
   release = "snapshot";
   packageLists = builtins.mapAttrs
     (k: v: v { inherit lib release target variant baremetal; })
@@ -12,28 +12,20 @@ let
 in
 build {
   inherit release target variant;
-  profile = "generic";
-  rootFsPartSize = 896;
+  profile = "glinet_gl-xe3000";
   packages = with packageLists;
-    apps ++ common ++ collectd ++ proxy ++ usb ++ [
+    apps ++ celluar ++ common ++ mwan ++ collectd ++ proxy ++ usb ++ [
       "-libustream-openssl"
       "luci-ssl"
 
-      "coturn"
-
-      "intel-microcode"
-      "iucode-tool"
-      "kmod-igc"
-      "kmod-kvm-intel"
-      "kmod-i2c-i801"
-      "kmod-itco-wdt"
+      "mt7981-wo-firmware"
     ];
 
   files = pkgs.runCommand "image-files" { } ''
     mkdir -p $out/etc/uci-defaults
     cat > $out/etc/uci-defaults/99-custom <<EOF
     uci -q batch << EOI
-    set network.lan.ipaddr=192.168.0.1
+    set network.lan.ipaddr=192.168.5.1
     commit
     EOI
     EOF

@@ -59,6 +59,7 @@ jobs:
         with:
           file: "result/*squashfs*.img.gz;result/profiles.json;result/sha256sums"
           overwrite: true
-          update_latest_release: true
-          default_release_name: "${{ matrix.router }}"
-          update_release_body: "Weekly build: ${{ needs.setup.outputs.date }}"
+          update_latest_release: false
+          default_release_name: "Weekly build: ${{ matrix.router }}"
+          update_release_body: "${{ needs.setup.outputs.date }}"
+          draft: false

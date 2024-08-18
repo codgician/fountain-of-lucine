@@ -14,4 +14,5 @@
   "nut-driver-richcomm_usb"
   "nut-driver-usbhid-ups"
   "nut-driver-apcupsd-ups"
+  "nut-avahi-service"
 ]
