@@ -57,8 +57,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: "result/**/*squashfs*.img.gz;profiles-${{ matrix.router }}.json;sha256sums-${{ matrix.router }}"
+          file: "result/*squashfs*.img.gz;result/profiles.json;result/sha256sums"
           overwrite: true
           update_latest_release: true
-          default_release_name: "Weekly build: ${{ needs.setup.outputs.date }}"
-          draft: true
+          default_release_name: "${{ matrix.router }}"
+          update_release_body: "Weekly build: ${{ needs.setup.outputs.date }}"
