@@ -1,6 +1,6 @@
 # Common package bundle
 
-{ lib, baremetal, ... }:
+{ lib, baremetal, target, ... }:
 
 [
   "-dnsmasq"
@@ -55,22 +55,23 @@
   "speedtest-cli"
   "lscpu"
   "lsblk"
+  "screen"
 
   "luci-i18n-base-zh-cn"
   "luci-i18n-opkg-zh-cn"
   "luci-i18n-firewall-zh-cn"
   "luci-proto-wireguard"
-] ++ (lib.optionals baremetal [
-  "intel-microcode"
-  "iucode-tool"
-  "kmod-kvm-intel"
-  "kmod-i2c-i801"
-  "kmod-itco-wdt"
 
+  "avahi-daemon-service-ssh"
+  "avahi-daemon-service-http"
+] ++ (lib.optionals baremetal [
   "lm-sensors-detect"
   "lm-sensors"
   "losetup"
 ]) ++ (lib.optionals (!baremetal) [
   "qemu-ga"
   "virtio-console-helper"
+]) ++ (lib.optionals (target == "rockchip") [
+  "kmod-drm-rockchip"
+  "kmod-saradc-rockchip"
 ])

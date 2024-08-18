@@ -9,8 +9,31 @@ permissions:
   contents: write
  
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
+    outputs:
+      routers: ${{ steps.get_routers.outputs.routers }}
+      date: ${{ steps.get_routers.outputs.date }}
+    steps:
+      - name: Clone 
+        uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Check flake
+        run: nix flake check
+      - name: Get routers
+        id: get_routers
+        run: |
+          result = $(nix eval .#packages.x86_64-linux --apply "x: builtins.toJSON (builtins.attrNames x)" --raw)
+          echo "routers=${result}" >> $GITHUB_OUTPUT
+          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        router: ${{ fromJson(needs.setup.outputs.routers) }}
     steps:
       - name: Clone 
         uses: actions/checkout@v4
@@ -18,18 +41,19 @@ jobs:
           persist-credentials: 'true'
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
-      - name: Check flake
-        run: nix flake check
-      - name: Build images
+      - name: Build image for ${{ matrix.router }}
+        run: nix build .#${{ matrix.router }}
+      - name: Rename files
         run: |
-          nix build .#lumidouce
-      - name: Upload to release
+          cp ./result/profiles.json ./profiles-${{ matrix.router }}.json
+          cp ./result/sha256sums ./sha256sums-${{ matrix.router }}
+      - name: Upload release for ${{ matrix.router }}
         uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: "result/**/*.img.gz;result/**/*.json;result/**/sha256sums"
+          file: "result/**/*squashfs*.img.gz;profiles-${{ matrix.router }}.json;sha256sums-${{ matrix.router }}"
           overwrite: true
           update_latest_release: true
-          default_release_name: "Weekly build"
+          default_release_name: "Weekly build: ${{ needs.setup.outputs.date }}"
           draft: true
