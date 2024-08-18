@@ -1,5 +1,5 @@
 # NanoPi R4SE
-{ pkgs, lib, build, bundles, ... }:
+{ name, pkgs, lib, build, bundles, ... }:
 
 let
   baremetal = true;
@@ -12,6 +12,7 @@ let
 in
 build {
   inherit release target variant;
+  extraImageName = name;
   profile = "friendlyarm_nanopi-r4se";
   packages = with packageLists;
     apps ++ common ++ collectd ++ nas ++ proxy ++ usb ++ [

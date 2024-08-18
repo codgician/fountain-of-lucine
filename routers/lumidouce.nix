@@ -1,5 +1,5 @@
 # x86_64 router
-{ pkgs, lib, build, bundles, ... }:
+{ name, pkgs, lib, build, bundles, ... }:
 
 let
   baremetal = false;
@@ -10,8 +10,9 @@ let
     (k: v: v { inherit lib release target variant baremetal; })
     bundles;
 in
-build {
+(build {
   inherit release target variant;
+  extraImageName = name;
   profile = "generic";
   rootFsPartSize = 896;
   packages = with packageLists;
@@ -38,4 +39,14 @@ build {
     EOI
     EOF
   '';
-}
+}).overrideAttrs (selfAttrs: superAttrs: {
+  # Skip generating unneeded image formats
+  postConfigure = ''
+    sed -i "s/CONFIG_TARGET_ROOTFS_EXT4FS=y/CONFIG_TARGET_ROOTFS_EXT4FS=n/g" ./.config
+    sed -i "s/CONFIG_VHDX_IMAGES=y/CONFIG_VHDX_IMAGES=n/g" ./.config
+    sed -i "s/CONFIG_QCOW2_IMAGES=y/CONFIG_QCOW2_IMAGES=n/g" ./.config
+    sed -i "s/CONFIG_ISO_IMAGES=y/CONFIG_ISO_IMAGES=n/g" ./.config
+    sed -i "s/CONFIG_VMDK_IMAGES=y/CONFIG_VMDK_IMAGES=n/g" ./.config
+    sed -i "s/CONFIG_VDI_IMAGES=y/CONFIG_VDI_IMAGES=n/g" ./.config
+  '';
+})

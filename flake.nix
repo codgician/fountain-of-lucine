@@ -19,7 +19,7 @@
       bundles = lib.genAttrs bundleNames (name: import ./bundles/${name}.nix);
       routerNames = getNixFileNamesWithoutExt ./routers;
       mkPackage = pkgs: name: import ./routers/${name}.nix {
-        inherit pkgs lib bundles self;
+        inherit pkgs lib bundles self name;
         inherit (immortalwrt-imagebuilder) profiles;
         inherit (immortalwrt-imagebuilder.lib) build;
       };

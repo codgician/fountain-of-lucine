@@ -1,5 +1,5 @@
 # GL.iNet XE3000
-{ pkgs, lib, build, bundles, ... }:
+{ name, pkgs, lib, build, bundles, ... }:
 
 let
   baremetal = true;
@@ -12,6 +12,7 @@ let
 in
 build {
   inherit release target variant;
+  extraImageName = name;
   profile = "glinet_gl-xe3000";
   packages = with packageLists;
     apps ++ celluar ++ common ++ mwan ++ collectd ++ proxy ++ usb ++ [
