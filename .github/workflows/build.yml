@@ -4,9 +4,12 @@ on:
   schedule:
   - cron: '0 8 * * 3'
   workflow_dispatch:
+
+permissions:
+  contents: write
  
 jobs:
-  evergreen:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Clone 
