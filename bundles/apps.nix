@@ -7,6 +7,7 @@
   "luci-i18n-autoreboot-zh-cn"
   "luci-app-acl"
   "luci-i18n-acl-zh-cn"
+  "miniupnpd-nftables"
   "luci-app-upnp"
   "luci-i18n-upnp-zh-cn"
   "luci-app-acme"
