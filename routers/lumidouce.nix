@@ -16,7 +16,7 @@ in
   profile = "generic";
   rootFsPartSize = 896;
   packages = with packageLists;
-    apps ++ common ++ collectd ++ proxy ++ usb ++ [
+    apps ++ common ++ collectd ++ proxy ++ tools ++ usb ++ [
       "-libustream-openssl"
       "luci-ssl"
 

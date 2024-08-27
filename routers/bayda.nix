@@ -14,8 +14,17 @@ build {
   inherit release target variant;
   extraImageName = name;
   profile = "glinet_gl-mifi";
-  packages = with packageLists;
-    apps ++ celluar ++ common ++ collectd ++ usb;
+  packages = with packageLists; 
+    celluar ++ common ++ usb ++ [
+      "luci-app-wol"
+      "luci-i18n-wol-zh-cn"
+      "luci-app-banip"
+      "luci-i18n-banip-zh-cn"
+      "luci-app-watchcat"
+      "luci-i18n-watchcat-zh-cn"
+      "luci-app-uhttpd"
+      "luci-i18n-uhttpd-zh-cn"
+    ];
 
   files = pkgs.runCommand "image-files" { } ''
     mkdir -p $out/etc/uci-defaults

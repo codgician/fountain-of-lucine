@@ -3,14 +3,6 @@
 { lib, baremetal, target, ... }:
 
 [
-  "-dnsmasq"
-  "dnsmasq-full"
-  "-ethtool"
-  "ethtool-full"
-  "vim"
-  "vim-runtime"
-
-  "ip-full"
   "iptables-nft"
   "ip6tables-nft"
 
@@ -43,19 +35,14 @@
 
   "htop"
   "minicom"
-  "postfix"
   "ca-bundle"
   "bind-host"
   "bind-dig"
-  "httping"
-  "tcping"
   "wget-ssl"
   "iperf3"
   "telnet-bsd"
-  "speedtest-cli"
   "lscpu"
   "lsblk"
-  "screen"
 
   "luci-i18n-base-zh-cn"
   "luci-i18n-opkg-zh-cn"

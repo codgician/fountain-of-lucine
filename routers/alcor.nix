@@ -15,7 +15,7 @@ build {
   extraImageName = name;
   profile = "glinet_gl-xe3000";
   packages = with packageLists;
-    apps ++ celluar ++ common ++ mwan ++ collectd ++ proxy ++ usb ++ [
+    apps ++ celluar ++ common ++ mwan ++ collectd ++ proxy ++ tools ++ usb ++ [
       "-libustream-openssl"
       "luci-ssl"
 

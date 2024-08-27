@@ -15,7 +15,7 @@ build {
   extraImageName = name;
   profile = "friendlyarm_nanopi-r4se";
   packages = with packageLists;
-    apps ++ common ++ collectd ++ nas ++ proxy ++ usb ++ [
+    apps ++ common ++ collectd ++ nas ++ proxy ++ tools ++ usb ++ [
       "-libustream-openssl"
       "luci-ssl"
     ];
