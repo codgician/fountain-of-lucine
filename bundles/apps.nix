@@ -1,8 +1,6 @@
 { lib, release, ... }:
 
 [
-  "luci-app-homeproxy"
-  "luci-i18n-homeproxy-zh-cn"
   "luci-app-autoreboot"
   "luci-i18n-autoreboot-zh-cn"
   "luci-app-acl"
