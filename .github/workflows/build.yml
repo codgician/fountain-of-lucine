@@ -7,7 +7,7 @@ on:
       - '**.md'
       - '.gitignore'
   schedule:
-  - cron: '0 8 * * 3'
+  - cron: '30 09 * * 3'
   workflow_dispatch:
 
 permissions:
