@@ -5,7 +5,7 @@ let
   baremetal = true;
   target = "ath79";
   variant = "generic";
-  release = "23.05.3";
+  release = "23.05.4";
   packageLists = builtins.mapAttrs
     (k: v: v { inherit lib release target variant baremetal; })
     bundles;
