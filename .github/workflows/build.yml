@@ -55,7 +55,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: "result/*squashfs*.bin;result/*squashfs*.img*;result/*squashfs*.itb;result/*.manifest;*sha256sums"
+          file: "result/*"
           overwrite: true
           update_latest_release: true
           default_release_name: "Weekly build"
