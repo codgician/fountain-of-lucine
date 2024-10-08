@@ -1,10 +1,10 @@
-# NanoPi R4SE
+# BananaPi R3-Mini
 { name, pkgs, lib, build, bundles, ... }:
 
 let
   baremetal = true;
-  target = "rockchip";
-  variant = "armv8";
+  target = "mediatek";
+  variant = "filogic";
   release = "23.05.4";
   packageLists = builtins.mapAttrs
     (k: v: v { inherit lib release target variant baremetal; })
@@ -13,11 +13,13 @@ in
 build {
   inherit release target variant;
   extraImageName = name;
-  profile = "friendlyarm_nanopi-r4se";
+  profile = "bananapi_bpi-r3-mini";
   packages = with packageLists;
     apps ++ common ++ collectd ++ nas ++ proxy ++ tools ++ usb ++ [
       "-libustream-openssl"
       "luci-ssl"
+
+      "mt7981-wo-firmware"
     ];
 
   files = pkgs.runCommand "image-files" { } ''
