@@ -58,6 +58,7 @@
 ]) ++ (lib.optionals (!baremetal) [
   "qemu-ga"
   "virtio-console-helper"
+  "kmod-i6300esb-wdt"
 ]) ++ (lib.optionals (target == "rockchip") [
   "kmod-drm-rockchip"
   "kmod-saradc-rockchip"
