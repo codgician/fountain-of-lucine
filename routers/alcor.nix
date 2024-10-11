@@ -16,6 +16,9 @@ build {
   profile = "glinet_gl-xe3000";
   packages = with packageLists;
     apps ++ celluar ++ common ++ mwan ++ collectd ++ proxy ++ tools ++ usb ++ [
+      # No longer exist in snapshot
+      "-ipv6helper"
+      
       "-libustream-openssl"
       "luci-ssl"
 

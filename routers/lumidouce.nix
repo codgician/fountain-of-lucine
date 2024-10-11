@@ -17,6 +17,9 @@ in
   rootFsPartSize = 896;
   packages = with packageLists;
     apps ++ common ++ collectd ++ proxy ++ tools ++ usb ++ [
+      # No longer exist in snapshot
+      "-ipv6helper"
+      
       "-libustream-openssl"
       "luci-ssl"
 
