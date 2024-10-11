@@ -5,7 +5,7 @@ let
   baremetal = false;
   target = "x86";
   variant = "64";
-  release = "snapshot";
+  release = "23.05.4";
   packageLists = builtins.mapAttrs
     (k: v: v { inherit lib release target variant baremetal; })
     bundles;
@@ -16,10 +16,7 @@ in
   profile = "generic";
   rootFsPartSize = 896;
   packages = with packageLists;
-    apps ++ common ++ collectd ++ proxy ++ tools ++ usb ++ [
-      # No longer exist in snapshot
-      "-ipv6helper"
-      
+    apps ++ common ++ collectd ++ proxy ++ tools ++ usb ++ [      
       "-libustream-openssl"
       "luci-ssl"
 
