@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1730363650,
-        "narHash": "sha256-aDCgAtkXjMuUECPMeHz3IIuEBQ707aps8YAFPkUon8M=",
+        "lastModified": 1730450090,
+        "narHash": "sha256-sIGZBmvzIYf/wvXJY7a7p6AiONI03yJW8gUfdMpt9dA=",
         "owner": "codgician",
         "repo": "nix-immortalwrt-imagebuilder",
-        "rev": "d2c6c1a6d81156ecdff7b476631c8a25c6135db1",
+        "rev": "26a615d4c0adb8b67175f3e8bc8b4b0196dc534c",
         "type": "github"
       },
       "original": {
