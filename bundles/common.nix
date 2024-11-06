@@ -1,6 +1,6 @@
 # Common package bundle
 
-{ lib, baremetal, target, ... }:
+{ lib, baremetal, target, release, ... }:
 
 [
   "iptables-nft"
@@ -45,7 +45,6 @@
   "lsblk"
 
   "luci-i18n-base-zh-cn"
-  "luci-i18n-opkg-zh-cn"
   "luci-i18n-firewall-zh-cn"
   "luci-proto-wireguard"
 
@@ -62,4 +61,6 @@
 ]) ++ (lib.optionals (target == "rockchip") [
   "kmod-drm-rockchip"
   "kmod-saradc-rockchip"
+]) ++ (lib.optionals (release != "snapshot") [
+  "luci-i18n-opkg-zh-cn"
 ])
