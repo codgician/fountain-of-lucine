@@ -37,6 +37,7 @@ jobs:
     strategy:
       matrix: 
         router: ${{ fromJson(needs.setup.outputs.routers) }}
+      fail-fast: false
     steps:
       - name: Clone 
         uses: actions/checkout@v4
