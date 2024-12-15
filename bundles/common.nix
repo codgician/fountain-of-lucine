@@ -61,6 +61,6 @@
 ]) ++ (lib.optionals (target == "rockchip") [
   "kmod-drm-rockchip"
   "kmod-saradc-rockchip"
-]) ++ (lib.optionals (release != "snapshot") [
+]) ++ (lib.optionals (release != "snapshot" || !(lib.versionAtLeast release "24.00")) [
   "luci-i18n-opkg-zh-cn"
 ])
