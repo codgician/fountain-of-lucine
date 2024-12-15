@@ -11,7 +11,7 @@ let
     bundles;
 in
 build {
-  inherit release target variant;
+  inherit release target variant pkgs;
   extraImageName = name;
   profile = "glinet_gl-mifi";
   packages = with packageLists; 

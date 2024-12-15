@@ -11,7 +11,7 @@ let
     bundles;
 in
 build {
-  inherit release target variant;
+  inherit release target variant pkgs;
   extraImageName = name;
   profile = "bananapi_bpi-r3-mini";
   packages = with packageLists;

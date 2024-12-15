@@ -11,7 +11,7 @@ let
     bundles;
 in
 (build {
-  inherit release target variant;
+  inherit release target variant pkgs;
   extraImageName = name;
   profile = "generic";
   rootFsPartSize = 896;
