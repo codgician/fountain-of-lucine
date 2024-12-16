@@ -50,7 +50,7 @@ jobs:
       - name: Rename files
         run: |
           mkdir -p ./upload
-          cp -R ./result ./upload
+          cp -R ./result/* ./upload
           mv ./upload/sha256sums ./upload/${{ matrix.router }}.sha256sums
           mv ./upload/profiles.json ./upload/${{ matrix.router }}.profiles.json
       - name: Upload release for ${{ matrix.router }}
