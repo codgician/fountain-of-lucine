@@ -49,14 +49,16 @@ jobs:
         run: nix build .#${{ matrix.router }}
       - name: Rename files
         run: |
-          mv ./result/sha256sums ./${{ matrix.router }}.sha256sums
-          mv ./result/profiles.json ./${{ matrix.router }}.profiles.json
+          mkdir -p ./upload
+          cp -R ./result ./upload
+          mv ./upload/sha256sums ./upload/${{ matrix.router }}.sha256sums
+          mv ./upload/profiles.json ./upload/${{ matrix.router }}.profiles.json
       - name: Upload release for ${{ matrix.router }}
         uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: "result/*"
+          file: "upload/*"
           overwrite: true
           update_latest_release: true
           default_release_name: "Weekly build"
