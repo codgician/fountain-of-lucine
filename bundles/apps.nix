@@ -25,6 +25,8 @@
   "luci-i18n-uhttpd-zh-cn"
   "luci-app-sqm"
   "luci-i18n-sqm-zh-cn"
+  "luci-app-vnstat2"
+  "luci-i18n-vnstat2-zh-cn"
 ] ++ (lib.optionals (release == "snapshot" || lib.versionAtLeast release "24.00") [
   "luci-app-irqbalance"
   "luci-i18n-irqbalance-zh-cn"
