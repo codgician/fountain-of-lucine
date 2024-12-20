@@ -6,6 +6,7 @@
   "iptables-nft"
   "ip6tables-nft"
 
+  "kmod-br-netfilter"
   "kmod-nf-nat"
   "kmod-nf-nat6"
   "kmod-nf-nathelper"
