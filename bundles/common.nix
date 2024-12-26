@@ -63,6 +63,8 @@
 
   "avahi-daemon-service-ssh"
   "avahi-daemon-service-http"
+  "avahi-utils"
+  "wsdd2"
 ] ++ (lib.optionals baremetal [
   "lm-sensors-detect"
   "lm-sensors"
