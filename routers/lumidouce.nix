@@ -5,7 +5,7 @@ let
   baremetal = false;
   target = "x86";
   variant = "64";
-  release = "24.10.0-rc2";
+  release = "24.10.0-rc3";
   packageLists = builtins.mapAttrs
     (k: v: v { inherit lib release target variant baremetal; })
     bundles;
