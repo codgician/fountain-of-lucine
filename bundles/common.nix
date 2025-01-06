@@ -78,4 +78,6 @@
   "kmod-saradc-rockchip"
 ]) ++ (lib.optionals (release != "snapshot" && !(lib.versionAtLeast release "24.00")) [
   "luci-i18n-opkg-zh-cn"
+]) ++ (lib.optionals (release == "snapshot" || (lib.versionAtLeast release "24.00")) [
+  "luci-i18n-package-manager-zh-cn"
 ])
