@@ -20,6 +20,7 @@ build {
       "luci-ssl"
 
       "mt7981-wo-firmware"
+      "kmod-mtd-rw"
     ];
 
   files = pkgs.runCommand "image-files" { } ''
