@@ -18,8 +18,6 @@ build {
     apps ++ common ++ collectd ++ nas ++ proxy ++ tools ++ usb ++ [
       "-libustream-openssl"
       "luci-ssl"
-
-      "mt7981-wo-firmware"
       "kmod-mtd-rw"
     ];
 

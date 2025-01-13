@@ -51,8 +51,8 @@ jobs:
         run: |
           mkdir -p ./upload
           cp -R ./result/* ./upload
-          mv ./upload/sha256sums ./upload/${{ matrix.router }}.sha256sums
-          mv ./upload/profiles.json ./upload/${{ matrix.router }}.profiles.json
+          mv -f ./upload/sha256sums ./upload/${{ matrix.router }}.sha256sums
+          mv -f ./upload/profiles.json ./upload/${{ matrix.router }}.profiles.json
       - name: Upload release for ${{ matrix.router }}
         uses: xresloader/upload-to-github-release@v1
         env:
