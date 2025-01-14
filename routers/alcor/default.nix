@@ -16,16 +16,14 @@ build {
   profile = "glinet_gl-xe3000";
   packages = with packageLists;
     apps ++ celluar ++ common ++ mwan ++ collectd ++ proxy ++ tools ++ usb ++ [
-      # No longer exist in snapshot
-      "-ipv6helper"
-
       "-libustream-openssl"
       "luci-ssl"
-
-      "mt7981-wo-firmware"
     ];
 
   files = pkgs.runCommand "image-files" { } ''
+    mkdir -p $out/etc
+    cp -r ${./sysctl.d}/. $out/etc/sysctl.d
+
     mkdir -p $out/etc/uci-defaults
     cat > $out/etc/uci-defaults/99-custom <<EOF
     uci -q batch << EOI
