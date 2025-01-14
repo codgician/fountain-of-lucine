@@ -1,21 +1,51 @@
 # GL.iNet XE3000
-{ name, pkgs, lib, build, bundles, ... }:
+{
+  name,
+  pkgs,
+  lib,
+  build,
+  bundles,
+  ...
+}:
 
 let
   baremetal = true;
   target = "mediatek";
   variant = "filogic";
   release = "24.10.0-rc3";
-  packageLists = builtins.mapAttrs
-    (k: v: v { inherit lib release target variant baremetal; })
-    bundles;
+  packageLists = builtins.mapAttrs (
+    k: v:
+    v {
+      inherit
+        lib
+        release
+        target
+        variant
+        baremetal
+        ;
+    }
+  ) bundles;
 in
 build {
-  inherit release target variant pkgs;
+  inherit
+    release
+    target
+    variant
+    pkgs
+    ;
   extraImageName = name;
   profile = "glinet_gl-xe3000";
-  packages = with packageLists;
-    apps ++ celluar ++ common ++ mwan ++ collectd ++ proxy ++ tools ++ usb ++ [
+  packages =
+    with packageLists;
+    apps
+    ++ celluar
+    ++ common
+    ++ mwan
+    ++ collectd
+    ++ proxy
+    ++ tools
+    ++ usb
+    ++ [
       "-libustream-openssl"
       "luci-ssl"
     ];

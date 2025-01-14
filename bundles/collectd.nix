@@ -22,7 +22,8 @@
   "collectd-mod-ping"
   "collectd-mod-dns"
   "collectd-mod-memory"
-] ++ (lib.optionals baremetal [
+]
+++ (lib.optionals baremetal [
   "collectd-mod-thermal"
   "collectd-mod-sensors"
   "collectd-mod-smart"

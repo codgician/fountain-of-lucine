@@ -1,21 +1,50 @@
 # BananaPi R3-Mini
-{ name, pkgs, lib, build, bundles, ... }:
+{
+  name,
+  pkgs,
+  lib,
+  build,
+  bundles,
+  ...
+}:
 
 let
   baremetal = true;
   target = "mediatek";
   variant = "filogic";
   release = "24.10.0-rc3";
-  packageLists = builtins.mapAttrs
-    (k: v: v { inherit lib release target variant baremetal; })
-    bundles;
+  packageLists = builtins.mapAttrs (
+    k: v:
+    v {
+      inherit
+        lib
+        release
+        target
+        variant
+        baremetal
+        ;
+    }
+  ) bundles;
 in
 build {
-  inherit release target variant pkgs;
+  inherit
+    release
+    target
+    variant
+    pkgs
+    ;
   extraImageName = name;
   profile = "bananapi_bpi-r3-mini";
-  packages = with packageLists;
-    apps ++ common ++ collectd ++ nas ++ proxy ++ tools ++ usb ++ [
+  packages =
+    with packageLists;
+    apps
+    ++ common
+    ++ collectd
+    ++ nas
+    ++ proxy
+    ++ tools
+    ++ usb
+    ++ [
       "-libustream-openssl"
       "luci-ssl"
       "kmod-mtd-rw"

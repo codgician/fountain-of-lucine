@@ -1,6 +1,12 @@
 # Common package bundle
 
-{ lib, baremetal, target, release, ... }:
+{
+  lib,
+  baremetal,
+  target,
+  release,
+  ...
+}:
 
 [
   "iptables-nft"
@@ -65,19 +71,24 @@
   "avahi-daemon-service-http"
   "avahi-utils"
   "wsdd2"
-] ++ (lib.optionals baremetal [
+]
+++ (lib.optionals baremetal [
   "lm-sensors-detect"
   "lm-sensors"
   "losetup"
-]) ++ (lib.optionals (!baremetal) [
+])
+++ (lib.optionals (!baremetal) [
   "qemu-ga"
   "virtio-console-helper"
   "kmod-i6300esb-wdt"
-]) ++ (lib.optionals (target == "rockchip") [
+])
+++ (lib.optionals (target == "rockchip") [
   "kmod-drm-rockchip"
   "kmod-saradc-rockchip"
-]) ++ (lib.optionals (release != "snapshot" && !(lib.versionAtLeast release "24.00")) [
+])
+++ (lib.optionals (release != "snapshot" && !(lib.versionAtLeast release "24.00")) [
   "luci-i18n-opkg-zh-cn"
-]) ++ (lib.optionals (release == "snapshot" || (lib.versionAtLeast release "24.00")) [
+])
+++ (lib.optionals (release == "snapshot" || (lib.versionAtLeast release "24.00")) [
   "luci-i18n-package-manager-zh-cn"
 ])

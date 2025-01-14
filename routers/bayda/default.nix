@@ -1,21 +1,46 @@
 # GL.iNet MiFi
-{ name, pkgs, lib, build, bundles, ... }:
+{
+  name,
+  pkgs,
+  lib,
+  build,
+  bundles,
+  ...
+}:
 
 let
   baremetal = true;
   target = "ath79";
   variant = "generic";
   release = "24.10.0-rc3";
-  packageLists = builtins.mapAttrs
-    (k: v: v { inherit lib release target variant baremetal; })
-    bundles;
+  packageLists = builtins.mapAttrs (
+    k: v:
+    v {
+      inherit
+        lib
+        release
+        target
+        variant
+        baremetal
+        ;
+    }
+  ) bundles;
 in
 build {
-  inherit release target variant pkgs;
+  inherit
+    release
+    target
+    variant
+    pkgs
+    ;
   extraImageName = name;
   profile = "glinet_gl-mifi";
-  packages = with packageLists;
-    celluar ++ common ++ usb ++ [
+  packages =
+    with packageLists;
+    celluar
+    ++ common
+    ++ usb
+    ++ [
       "luci-app-wol"
       "luci-i18n-wol-zh-cn"
       "luci-app-banip"

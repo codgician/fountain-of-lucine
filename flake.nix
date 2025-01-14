@@ -3,11 +3,18 @@
     immortalwrt-imagebuilder.url = "github:codgician/nix-immortalwrt-imagebuilder";
   };
 
-  outputs = { self, nixpkgs, immortalwrt-imagebuilder }:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      immortalwrt-imagebuilder,
+    }:
     let
-      lib = nixpkgs.lib.extend (self: super: {
-        fountaine-of-lucine = import ./lib.nix { lib = self; };
-      });
+      lib = nixpkgs.lib.extend (
+        self: super: {
+          fountaine-of-lucine = import ./lib.nix { lib = self; };
+        }
+      );
       foreachArch = func: lib.genAttrs [ "x86_64-linux" ] (system: func nixpkgs.legacyPackages.${system});
       inherit (lib.fountaine-of-lucine) getNixFileNamesWithoutExt getFolderNames;
       appNames = getNixFileNamesWithoutExt ./apps;
@@ -18,15 +25,35 @@
       bundleNames = getNixFileNamesWithoutExt ./bundles;
       bundles = lib.genAttrs bundleNames (name: import ./bundles/${name}.nix);
       routerNames = getFolderNames ./routers;
-      mkPackage = pkgs: name: import ./routers/${name} {
-        inherit pkgs lib bundles self name;
-        inherit (immortalwrt-imagebuilder) profiles;
-        inherit (immortalwrt-imagebuilder.lib) build;
-      };
+      mkPackage =
+        pkgs: name:
+        import ./routers/${name} {
+          inherit
+            pkgs
+            lib
+            bundles
+            self
+            name
+            ;
+          inherit (immortalwrt-imagebuilder) profiles;
+          inherit (immortalwrt-imagebuilder.lib) build;
+        };
     in
     {
       apps = foreachArch (pkgs: (lib.genAttrs appNames (mkApp pkgs)));
-      formatter = foreachArch (pkgs: pkgs.nixpkgs-fmt);
+
+      formatter = foreachArch (
+        pkgs:
+        pkgs.writeShellApplication {
+          name = "formatter";
+          runtimeInputs = with pkgs; [
+            treefmt
+            nixfmt-rfc-style
+          ];
+          text = lib.getExe pkgs.treefmt;
+        }
+      );
+
       packages = foreachArch (pkgs: (lib.genAttrs routerNames (mkPackage pkgs)));
     };
 }
