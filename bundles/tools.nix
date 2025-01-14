@@ -5,7 +5,7 @@
 [
   "-ethtool"
   "ethtool-full"
-  
+
   "vim"
   "vim-runtime"
 

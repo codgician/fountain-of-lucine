@@ -9,7 +9,7 @@
         fountaine-of-lucine = import ./lib.nix { lib = self; };
       });
       foreachArch = func: lib.genAttrs [ "x86_64-linux" ] (system: func nixpkgs.legacyPackages.${system});
-      getNixFileNamesWithoutExt = lib.fountaine-of-lucine.getNixFileNamesWithoutExt;
+      inherit (lib.fountaine-of-lucine) getNixFileNamesWithoutExt getFolderNames;
       appNames = getNixFileNamesWithoutExt ./apps;
       mkApp = pkgs: name: {
         type = "app";
@@ -17,8 +17,8 @@
       };
       bundleNames = getNixFileNamesWithoutExt ./bundles;
       bundles = lib.genAttrs bundleNames (name: import ./bundles/${name}.nix);
-      routerNames = getNixFileNamesWithoutExt ./routers;
-      mkPackage = pkgs: name: import ./routers/${name}.nix {
+      routerNames = getFolderNames ./routers;
+      mkPackage = pkgs: name: import ./routers/${name} {
         inherit pkgs lib bundles self name;
         inherit (immortalwrt-imagebuilder) profiles;
         inherit (immortalwrt-imagebuilder.lib) build;

@@ -1,4 +1,4 @@
-# BananaPi R3-Mini
+# GL.iNet XE3000
 { name, pkgs, lib, build, bundles, ... }:
 
 let
@@ -13,19 +13,23 @@ in
 build {
   inherit release target variant pkgs;
   extraImageName = name;
-  profile = "bananapi_bpi-r3-mini";
+  profile = "glinet_gl-xe3000";
   packages = with packageLists;
-    apps ++ common ++ collectd ++ nas ++ proxy ++ tools ++ usb ++ [
+    apps ++ celluar ++ common ++ mwan ++ collectd ++ proxy ++ tools ++ usb ++ [
+      # No longer exist in snapshot
+      "-ipv6helper"
+
       "-libustream-openssl"
       "luci-ssl"
-      "kmod-mtd-rw"
+
+      "mt7981-wo-firmware"
     ];
 
   files = pkgs.runCommand "image-files" { } ''
     mkdir -p $out/etc/uci-defaults
     cat > $out/etc/uci-defaults/99-custom <<EOF
     uci -q batch << EOI
-    set network.lan.ipaddr=192.168.6.1
+    set network.lan.ipaddr=192.168.5.1
     commit
     EOI
     EOF

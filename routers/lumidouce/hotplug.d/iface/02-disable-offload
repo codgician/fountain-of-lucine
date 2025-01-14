@@ -1,0 +1,7 @@
+if [ "ifup" = "$ACTION" ] && [ "pppoe-wan" = "$DEVICE" ]; then
+    ethtool -K eth0 gro off gso off tso off
+fi
+
+if [ "ifup" = "$ACTION" ] && [ "eth1" = "$DEVICE" ]; then
+    ethtool -K eth1 gro off gso off tso off
+fi

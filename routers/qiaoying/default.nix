@@ -1,10 +1,10 @@
-# GL.iNet MiFi
+# BananaPi R3-Mini
 { name, pkgs, lib, build, bundles, ... }:
 
 let
   baremetal = true;
-  target = "ath79";
-  variant = "generic";
+  target = "mediatek";
+  variant = "filogic";
   release = "24.10.0-rc3";
   packageLists = builtins.mapAttrs
     (k: v: v { inherit lib release target variant baremetal; })
@@ -13,24 +13,22 @@ in
 build {
   inherit release target variant pkgs;
   extraImageName = name;
-  profile = "glinet_gl-mifi";
-  packages = with packageLists; 
-    celluar ++ common ++ usb ++ [
-      "luci-app-wol"
-      "luci-i18n-wol-zh-cn"
-      "luci-app-banip"
-      "luci-i18n-banip-zh-cn"
-      "luci-app-watchcat"
-      "luci-i18n-watchcat-zh-cn"
-      "luci-app-uhttpd"
-      "luci-i18n-uhttpd-zh-cn"
+  profile = "bananapi_bpi-r3-mini";
+  packages = with packageLists;
+    apps ++ common ++ collectd ++ nas ++ proxy ++ tools ++ usb ++ [
+      "-libustream-openssl"
+      "luci-ssl"
+      "kmod-mtd-rw"
     ];
 
   files = pkgs.runCommand "image-files" { } ''
+    mkdir -p $out/etc
+    cp -r ${./sysctl.d} $out/etc/
+
     mkdir -p $out/etc/uci-defaults
     cat > $out/etc/uci-defaults/99-custom <<EOF
     uci -q batch << EOI
-    set network.lan.ipaddr=192.168.4.1
+    set network.lan.ipaddr=192.168.6.1
     commit
     EOI
     EOF

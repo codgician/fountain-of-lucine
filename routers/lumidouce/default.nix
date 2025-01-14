@@ -16,7 +16,7 @@ in
   profile = "generic";
   rootFsPartSize = 896;
   packages = with packageLists;
-    apps ++ common ++ collectd ++ proxy ++ tools ++ usb ++ [      
+    apps ++ common ++ collectd ++ proxy ++ tools ++ usb ++ [
       "-libustream-openssl"
       "luci-ssl"
 
@@ -31,6 +31,10 @@ in
     ];
 
   files = pkgs.runCommand "image-files" { } ''
+    mkdir -p $out/etc
+    cp -r ${./hotplug.d} $out/etc/
+    cp -r ${./sysctl.d} $out/etc/
+
     mkdir -p $out/etc/uci-defaults
     cat > $out/etc/uci-defaults/99-custom <<EOF
     uci -q batch << EOI
