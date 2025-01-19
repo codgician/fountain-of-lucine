@@ -76,11 +76,18 @@
   "lm-sensors-detect"
   "lm-sensors"
   "losetup"
+
+  "kmod-hwmon-drivetemp"
+  "kmod-hwmon-pwmfan"
+  "kmod-hwmon-gpiofan"
+  "kmod-hwmon-vid"
 ])
 ++ (lib.optionals (!baremetal) [
   "qemu-ga"
   "virtio-console-helper"
   "kmod-i6300esb-wdt"
+  "kmod-itco-wdt"
+  "kmod-softdog"
 ])
 ++ (lib.optionals (target == "rockchip") [
   "kmod-drm-rockchip"
