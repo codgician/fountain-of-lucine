@@ -53,10 +53,12 @@ build {
   files = pkgs.runCommand "image-files" { } ''
     mkdir -p $out/etc
     cp -r ${./sysctl.d}/. $out/etc/sysctl.d
+    cp ${./rc.local} $out/etc/rc.local
 
     mkdir -p $out/etc/uci-defaults
     cat > $out/etc/uci-defaults/99-custom <<EOF
     uci -q batch << EOI
+    set system.hostname='${name}'
     set network.lan.ipaddr=192.168.6.1
     commit
     EOI

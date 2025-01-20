@@ -57,6 +57,7 @@ build {
     mkdir -p $out/etc/uci-defaults
     cat > $out/etc/uci-defaults/99-custom <<EOF
     uci -q batch << EOI
+    set system.hostname='${name}'
     set network.lan.ipaddr=192.168.5.1
     commit
     EOI
