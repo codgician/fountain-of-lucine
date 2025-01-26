@@ -81,6 +81,8 @@
   "kmod-hwmon-pwmfan"
   "kmod-hwmon-gpiofan"
   "kmod-hwmon-vid"
+
+  "kmod-nvme"
 ])
 ++ (lib.optionals (!baremetal) [
   "qemu-ga"
