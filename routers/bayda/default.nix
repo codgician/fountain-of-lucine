@@ -12,7 +12,7 @@ let
   baremetal = true;
   target = "ath79";
   variant = "generic";
-  release = "24.10.0-rc4";
+  release = "24.10.0";
   packageLists = builtins.mapAttrs (
     k: v:
     v {
