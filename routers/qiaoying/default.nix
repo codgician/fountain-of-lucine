@@ -48,6 +48,9 @@ build {
       "-libustream-openssl"
       "luci-ssl"
       "kmod-mtd-rw"
+      "kmod-sound-soc-mt7986"
+      "kmod-sound-soc-mt7986-wm8960"
+      "kmod-mt76-sdio"
     ];
 
   files = pkgs.runCommand "image-files" { } ''
