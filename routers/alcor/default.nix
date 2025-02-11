@@ -48,6 +48,9 @@ build {
     ++ [
       "-libustream-openssl"
       "luci-ssl"
+      "kmod-mtd-rw"
+      "kmod-mt76-sdio"
+      "kmod-mt7915-firmware"
     ];
 
   files = pkgs.runCommand "image-files" { } ''
