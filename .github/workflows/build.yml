@@ -6,8 +6,8 @@ on:
     paths-ignore:
       - '**.md'
       - '.gitignore'
-  schedule:
-  - cron: '00 10 * * 3'
+  repository_dispatch:
+    types: [ build ]
   workflow_dispatch:
 
 permissions:
