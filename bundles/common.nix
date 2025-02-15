@@ -71,6 +71,10 @@
   "avahi-daemon-service-http"
   "avahi-utils"
   "wsdd2"
+
+  "aria2"
+  "libopenssl-legacy"
+  "screen"
 ]
 ++ (lib.optionals baremetal [
   "lm-sensors-detect"
