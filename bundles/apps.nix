@@ -27,6 +27,18 @@
   "luci-i18n-sqm-zh-cn"
   "luci-app-vnstat2"
   "luci-i18n-vnstat2-zh-cn"
+
+  "aria2"
+  "libopenssl-legacy"
+  "screen"
+  "wget-ssl"
+  "telnet-bsd"
+
+  "bind-host"
+  "bind-dig"
+  "iperf3"
+  "lscpu"
+  "lsblk"
 ]
 ++ (lib.optionals (release == "snapshot" || lib.versionAtLeast release "24.00") [
   "luci-app-irqbalance"

@@ -52,29 +52,18 @@
   "kmod-sched-connmark"
   "kmod-tcp-bbr"
 
-  "htop"
-  "minicom"
-  "ca-bundle"
-  "bind-host"
-  "bind-dig"
-  "wget-ssl"
-  "iperf3"
-  "telnet-bsd"
-  "lscpu"
-  "lsblk"
-
   "luci-i18n-base-zh-cn"
   "luci-i18n-firewall-zh-cn"
   "luci-proto-wireguard"
+
+  "ca-bundle"
+  "htop"
+  "minicom"
 
   "avahi-daemon-service-ssh"
   "avahi-daemon-service-http"
   "avahi-utils"
   "wsdd2"
-
-  "aria2"
-  "libopenssl-legacy"
-  "screen"
 ]
 ++ (lib.optionals baremetal [
   "lm-sensors-detect"
