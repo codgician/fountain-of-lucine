@@ -23,6 +23,7 @@ jobs:
       - name: Update nix flake
         run: nix flake update
       - name: Push changes
+        id: push
         run: |
           if [[ `git status flake.lock --porcelain` ]]; then
             git config user.name github-actions
