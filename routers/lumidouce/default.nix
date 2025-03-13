@@ -42,6 +42,7 @@ in
     ++ common
     ++ collectd
     ++ proxy
+    ++ qos
     ++ tools
     ++ usb
     ++ [

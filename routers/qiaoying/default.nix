@@ -42,6 +42,7 @@ build {
     ++ collectd
     ++ nas
     ++ proxy
+    ++ qos
     ++ tools
     ++ usb
     ++ [

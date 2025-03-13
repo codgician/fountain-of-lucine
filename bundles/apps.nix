@@ -23,10 +23,6 @@
   "luci-i18n-watchcat-zh-cn"
   "luci-app-uhttpd"
   "luci-i18n-uhttpd-zh-cn"
-  "luci-app-sqm"
-  "luci-i18n-sqm-zh-cn"
-  "luci-app-vnstat2"
-  "luci-i18n-vnstat2-zh-cn"
 
   "aria2"
   "libopenssl-legacy"
