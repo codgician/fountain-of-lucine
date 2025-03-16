@@ -49,6 +49,7 @@ build {
       "-libustream-openssl"
       "luci-ssl"
       "kmod-mtd-rw"
+      "mt7981-wo-firmware"
       "kmod-mt76-sdio"
       "kmod-mt7915-firmware"
     ];
