@@ -23,7 +23,11 @@ jobs:
       - name: Clone 
         uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
-      - uses: DeterminateSystems/magic-nix-cache-action@main
+        with:
+          extra-conf: |
+            accept-flake-config = true
+            experimental-features = nix-command flakes
+            builders-use-substitutes = true
       - name: Get routers
         id: get_routers
         run: |
@@ -44,7 +48,11 @@ jobs:
         with:
           persist-credentials: 'true'
       - uses: DeterminateSystems/nix-installer-action@main
-      - uses: DeterminateSystems/magic-nix-cache-action@main
+        with:
+          extra-conf: |
+            accept-flake-config = true
+            experimental-features = nix-command flakes
+            builders-use-substitutes = true
       - name: Build image for ${{ matrix.router }}
         run: nix build .#${{ matrix.router }}
       - name: Rename files

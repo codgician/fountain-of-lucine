@@ -19,7 +19,11 @@ jobs:
         with:
           persist-credentials: 'true'
       - uses: DeterminateSystems/nix-installer-action@main
-      - uses: DeterminateSystems/magic-nix-cache-action@main
+        with:
+          extra-conf: |
+            accept-flake-config = true
+            experimental-features = nix-command flakes
+            builders-use-substitutes = true      
       - name: Update nix flake
         run: nix flake update
       - name: Push changes
