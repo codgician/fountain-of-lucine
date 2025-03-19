@@ -28,13 +28,6 @@
   "libopenssl-legacy"
   "screen"
   "wget-ssl"
-  "telnet-bsd"
-
-  "bind-host"
-  "bind-dig"
-  "iperf3"
-  "lscpu"
-  "lsblk"
 ]
 ++ (lib.optionals (release == "snapshot" || lib.versionAtLeast release "24.00") [
   "luci-app-irqbalance"

@@ -9,6 +9,13 @@
   "vim"
   "vim-runtime"
 
+  "telnet-bsd"
+  "bind-host"
+  "bind-dig"
+  "iperf3"
+  "lscpu"
+  "lsblk"
+
   "postfix"
   "httping"
   "tcping"

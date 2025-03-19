@@ -21,6 +21,8 @@
   "kmod-nf-nathelper"
   "kmod-nf-nathelper-extra"
   "kmod-nfnetlink"
+  "kmod-nfnetlink-cthelper"
+  "kmod-nfnetlink-cttimeout"
   "kmod-nfnetlink-log"
   "kmod-nfnetlink-queue"
   "kmod-nf-ipvs"
