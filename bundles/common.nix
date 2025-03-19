@@ -58,6 +58,10 @@
   "avahi-daemon-service-http"
   "avahi-utils"
   "wsdd2"
+
+  "dosfstools"
+  "f2fs-tools-selinux"
+  "f2fsck-selinux"
 ]
 ++ (lib.optionals baremetal [
   "lm-sensors-detect"
