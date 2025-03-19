@@ -5,6 +5,7 @@
   baremetal,
   target,
   release,
+  selinux ? false,
   ...
 }:
 
@@ -60,9 +61,30 @@
   "wsdd2"
 
   "dosfstools"
-  "f2fs-tools-selinux"
-  "f2fsck-selinux"
+  "f2fs-tools"
+  "f2fsck"
 ]
+++ (lib.optionals selinux [
+  "-busybox"
+  "busybox-selinux"
+
+  "-procd"
+  "procd-selinux"
+
+  "-mkf2fs"
+  "mkf2fs-selinux"
+  "-f2fs-tools"
+  "f2fs-tools-selinux"
+  "-f2fsck"
+  "f2fsck-selinux"
+  
+  "selinux-policy"
+  "policycoreutils"
+  "policycoreutils-fixfiles"
+  "policycoreutils-load_policy"
+  "policycoreutils-semodule"
+  "policycoreutils-sestatus"
+])
 ++ (lib.optionals baremetal [
   "lm-sensors-detect"
   "lm-sensors"
