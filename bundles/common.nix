@@ -9,10 +9,13 @@
 }:
 
 [
+  "arptables-nft"
   "iptables-nft"
   "ip6tables-nft"
 
+  "kmod-arptables"
   "kmod-br-netfilter"
+  "kmod-mdio-netlink"
   "kmod-nf-nat"
   "kmod-nf-nat6"
   "kmod-nf-nathelper"
@@ -35,18 +38,7 @@
   "kmod-nft-tproxy"
   "kmod-nft-xfrm"
   "kmod-nft-offload"
-  "kmod-ipt-tproxy"
-  "kmod-ipt-nat6"
-  "kmod-ipt-nat-extra"
-  "kmod-ipt-offload"
-  "kmod-ipt-conntrack"
-  "kmod-ipt-conntrack-extra"
-  "kmod-ipt-conntrack-label"
-  "kmod-ipt-nathelper-rtsp"
-  "iptables-mod-nflog"
-  "iptables-mod-nfqueue"
-  "kmod-mdio-netlink"
-
+  
   "kmod-tls"
   "kmod-sched-mqprio"
   "kmod-sched-connmark"
