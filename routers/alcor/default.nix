@@ -43,6 +43,7 @@ build {
     ++ mwan
     ++ collectd
     ++ proxy
+    ++ qos
     ++ tools
     ++ usb
     ++ [
