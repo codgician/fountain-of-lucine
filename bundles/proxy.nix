@@ -11,6 +11,6 @@
   "luci-i18n-homeproxy-zh-cn"
   "haveged"
 
-  "luci-i18n-udp2raw"
+  "luci-app-udp2raw"
   "luci-i18n-udp2raw-zh-cn"
 ]
