@@ -96,6 +96,8 @@
   "kmod-hwmon-vid"
 
   "kmod-nvme"
+  "nvme-cli"
+  "pciutils"
 ])
 ++ (lib.optionals (!baremetal) [
   "qemu-ga"
