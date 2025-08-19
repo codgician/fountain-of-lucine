@@ -43,10 +43,6 @@ build {
     ++ [
       "luci-app-wol"
       "luci-i18n-wol-zh-cn"
-      "luci-app-banip"
-      "luci-i18n-banip-zh-cn"
-      "luci-app-watchcat"
-      "luci-i18n-watchcat-zh-cn"
       "luci-app-uhttpd"
       "luci-i18n-uhttpd-zh-cn"
     ];
