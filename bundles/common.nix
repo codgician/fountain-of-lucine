@@ -89,6 +89,7 @@
   "lm-sensors-detect"
   "lm-sensors"
   "losetup"
+  "fdisk"
 
   "kmod-hwmon-drivetemp"
   "kmod-hwmon-pwmfan"
