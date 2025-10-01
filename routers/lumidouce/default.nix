@@ -12,7 +12,7 @@ let
   baremetal = false;
   target = "x86";
   variant = "64";
-  release = "24.10.2";
+  release = "24.10.3";
   packageLists = builtins.mapAttrs (
     k: v:
     v {
