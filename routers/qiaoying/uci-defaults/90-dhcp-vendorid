@@ -1,0 +1,5 @@
+#!/bin/sh
+
+sed -i 's/\${vendorid:+-V "\$vendorid"}/\${vendorid:+-V "" "-x 0x3c:\$vendorid"}/' /lib/netifd/proto/dhcp.sh
+
+exit 0

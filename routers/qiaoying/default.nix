@@ -60,6 +60,7 @@ build {
     mkdir -p $out/etc
     cp -r ${./sysctl.d}/. $out/etc/sysctl.d
     cp ${./rc.local} $out/etc/rc.local
+    cp -r ${./uci-defaults}/. $out/etc/uci-defaults
 
     mkdir -p $out/etc/uci-defaults
     cat > $out/etc/uci-defaults/99-custom <<EOF
