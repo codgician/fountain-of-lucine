@@ -40,6 +40,7 @@ build {
     apps
     ++ common
     ++ collectd
+    ++ iptv
     ++ nas
     ++ proxy
     ++ qos
