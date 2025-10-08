@@ -60,7 +60,6 @@ build {
     mkdir -p $out/etc
     cp -r ${./sysctl.d}/. $out/etc/sysctl.d
     cp ${./rc.local} $out/etc/rc.local
-    cp -r ${./uci-defaults}/. $out/etc/uci-defaults
     cp -r ${./www}/. $out/www
 
     mkdir -p $out/etc/uci-defaults
@@ -71,5 +70,7 @@ build {
     commit
     EOI
     EOF
+
+    cp ${./uci-defaults}/* $out/etc/uci-defaults  
   '';
 }
