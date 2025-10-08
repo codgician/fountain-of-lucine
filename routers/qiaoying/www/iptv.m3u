@@ -55,7 +55,7 @@ http://192.168.6.1:7088/rtp/239.11.0.81:5140
 http://192.168.6.1:7088/rtp/239.11.0.82:5140
 #EXTINF:-1 tvg-name="CGTN记录" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/CGTN记录.png" group-title="央视",CGTN记录
 http://192.168.6.1:7088/rtp/239.11.0.138:5140
-#EXTINF:-1 tvg-name="CGTN英语" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/CGTN英语.png" group-title="央视",CGTN英语
+#EXTINF:-1 tvg-name="CGTN英语" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/CGTN.png" group-title="央视",CGTN英语
 http://192.168.6.1:7088/rtp/239.11.0.245:5140
 #EXTINF:-1 tvg-name="CCTV4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/CCTV4K.png" group-title="4K",CCTV4K
 http://192.168.6.1:7088/rtp/239.11.0.62:5140
@@ -73,21 +73,21 @@ http://192.168.6.1:7088/rtp/239.10.0.92:5140
 http://192.168.6.1:7088/rtp/239.10.0.93:5140
 #EXTINF:-1 tvg-name="广东卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/广东卫视4K.png" group-title="4K",广东卫视4K
 http://192.168.6.1:7088/rtp/239.10.0.94:5140
-#EXTINF:-1 tvg-name="四川卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/四川卫视4K.png" group-title="4K",四川卫视4K
+#EXTINF:-1 tvg-name="四川卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/四川卫视.png" group-title="4K",四川卫视4K
 http://192.168.6.1:7088/rtp/239.11.0.43:5140
-#EXTINF:-1 tvg-name="四川卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/四川卫视4K.png" group-title="4K",四川卫视4K
+#EXTINF:-1 tvg-name="四川卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/四川卫视.png" group-title="4K",四川卫视4K
 http://192.168.6.1:7088/rtp/239.11.0.86:5140
-#EXTINF:-1 tvg-name="东方卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/东方卫视4K.png" group-title="4K",东方卫视4K
+#EXTINF:-1 tvg-name="东方卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/东方卫视.png" group-title="4K",东方卫视4K
 http://192.168.6.1:7088/rtp/239.11.0.90:5140
-#EXTINF:-1 tvg-name="浙江卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/浙江卫视4K.png" group-title="4K",浙江卫视4K
+#EXTINF:-1 tvg-name="浙江卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/浙江卫视.png" group-title="4K",浙江卫视4K
 http://192.168.6.1:7088/rtp/239.11.0.89:5140
-#EXTINF:-1 tvg-name="江苏卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/江苏卫视4K.png" group-title="4K",江苏卫视4K
+#EXTINF:-1 tvg-name="江苏卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/江苏卫视.png" group-title="4K",江苏卫视4K
 http://192.168.6.1:7088/rtp/239.11.0.88:5140
-#EXTINF:-1 tvg-name="湖南卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/湖南卫视4K.png" group-title="4K",湖南卫视4K
+#EXTINF:-1 tvg-name="湖南卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/湖南卫视.png" group-title="4K",湖南卫视4K
 http://192.168.6.1:7088/rtp/239.11.0.87:5140
-#EXTINF:-1 tvg-name="山东卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/山东卫视4K.png" group-title="4K",山东卫视4K
+#EXTINF:-1 tvg-name="山东卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/山东卫视.png" group-title="4K",山东卫视4K
 http://192.168.6.1:7088/rtp/239.11.0.91:5140
-#EXTINF:-1 tvg-name="四川卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/四川卫视4K.png" group-title="4K",四川卫视4K
+#EXTINF:-1 tvg-name="四川卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/四川卫视.png" group-title="4K",四川卫视4K
 http://192.168.6.1:7088/rtp/239.11.0.86:5140
 #EXTINF:-1 tvg-name="爱上4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/爱上4K.png" group-title="4K",爱上4K
 http://192.168.6.1:7088/rtp/239.11.0.120:5140
