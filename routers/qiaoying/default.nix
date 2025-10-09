@@ -55,6 +55,7 @@ build {
       "kmod-sound-soc-mt7986-wm8960"
       "kmod-mt76-sdio"
       "kmod-mt7915-firmware"
+      "mmc-utils"
     ];
 
   files = pkgs.runCommand "image-files" { } ''
