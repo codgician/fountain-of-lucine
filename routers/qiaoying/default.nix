@@ -13,6 +13,7 @@ let
   target = "mediatek";
   variant = "filogic";
   release = "24.10.3";
+  rootFsPartSize = 7384;
   packageLists = builtins.mapAttrs (
     k: v:
     v {
