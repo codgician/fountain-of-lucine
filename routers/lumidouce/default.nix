@@ -63,6 +63,7 @@ in
     mkdir -p $out/etc
     cp -r ${./hotplug.d}/. $out/etc/hotplug.d
     cp -r ${./sysctl.d}/. $out/etc/sysctl.d
+    cp -r ${./www}/. $out/www
 
     mkdir -p $out/etc/uci-defaults
     cat > $out/etc/uci-defaults/99-custom <<EOF
