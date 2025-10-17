@@ -21,4 +21,5 @@
   "tcping"
   "speedtest-cli"
   "pppoe-discovery"
+  "tcpdump"
 ]
