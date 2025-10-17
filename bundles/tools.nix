@@ -22,4 +22,6 @@
   "speedtest-cli"
   "pppoe-discovery"
   "tcpdump"
+
+  "picocom"
 ]

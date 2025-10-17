@@ -38,7 +38,7 @@ build {
   packages =
     with packageLists;
     apps
-    ++ celluar
+    ++ cellular
     ++ common
     ++ mwan
     ++ collectd
