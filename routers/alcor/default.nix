@@ -53,6 +53,7 @@ build {
       "mt7981-wo-firmware"
       "kmod-mt76-sdio"
       "kmod-mt7915-firmware"
+      "gl-puli-mcu"
     ];
 
   files = pkgs.runCommand "image-files" { } ''
