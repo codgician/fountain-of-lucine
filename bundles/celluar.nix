@@ -6,11 +6,15 @@
   "luci-proto-modemmanager"
   "luci-proto-3g"
   "luci-proto-qmi"
+  "luci-proto-quectel"
 
   "comgt-ncm"
   "qmi-utils"
+  "quectel-cm"
 
+  "kmod-mhi-bus"
   "kmod-mhi-net"
+  "kmod-mhi-pci-generic"
   "kmod-mhi-wwan-ctrl"
   "kmod-mhi-wwan-mbim"
   "kmod-wwan"
