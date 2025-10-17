@@ -41,7 +41,7 @@
   "kmod-nft-tproxy"
   "kmod-nft-xfrm"
   "kmod-nft-offload"
-  
+
   "kmod-tls"
   "kmod-sched-mqprio"
   "kmod-sched-connmark"
@@ -77,7 +77,7 @@
   "f2fs-tools-selinux"
   "-f2fsck"
   "f2fsck-selinux"
-  
+
   "selinux-policy"
   "policycoreutils"
   "policycoreutils-fixfiles"

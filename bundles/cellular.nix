@@ -1,8 +1,11 @@
 {
   lib,
+  mbim ? false,
+  mhi ? false,
+  ncm ? false,
+  qmi ? false,
   quectel ? false,
-  mhi ? true,
-  ... 
+  ...
 }:
 
 [
@@ -14,26 +17,16 @@
 
   "luci-proto-modemmanager"
   "luci-proto-3g"
-  "luci-proto-mbim"
-  "luci-proto-qmi"
-
-  "comgt-ncm"
-  "qmi-utils"
-  "mbim-utils"
 
   "kmod-usb3"
-  "kmod-usb-net-cdc-mbim"
   "kmod-usb-net-cdc-ether"
-  "kmod-usb-net-cdc-mbim"
-  "kmod-usb-net-cdc-ncm"
-  "kmod-usb-net-huawei-cdc-ncm"
-  "kmod-usb-net-qmi-wwan"
   "kmod-usb-serial-option"
+  "kmod-wwan"
 ]
-++ (lib.optionals quectel [
-  "luci-proto-quectel"
-  "kmod-usb-net-qmi-wwan-quectel"
-  "quectel-cm"
+++ (lib.optionals mbim [
+  "luci-proto-mbim"
+  "mbim-utils"
+  "kmod-usb-net-cdc-mbim"
 ])
 ++ (lib.optionals mhi [
   "kmod-mhi-bus"
@@ -41,4 +34,19 @@
   "kmod-mhi-pci-generic"
   "kmod-mhi-wwan-ctrl"
   "kmod-mhi-wwan-mbim"
+])
+++ (lib.optionals ncm [
+  "comgt-ncm"
+  "kmod-usb-net-cdc-ncm"
+  "kmod-usb-net-huawei-cdc-ncm"
+])
+++ (lib.optionals qmi [
+  "luci-proto-qmi"
+  "qmi-utils"
+  "kmod-usb-net-qmi-wwan"
+])
+++ (lib.optionals quectel [
+  "luci-proto-quectel"
+  "kmod-usb-net-qmi-wwan-quectel"
+  "quectel-cm"
 ])

@@ -23,6 +23,8 @@ let
         variant
         baremetal
         ;
+      qmi = true;
+      mhi = true;
     }
   ) bundles;
 in
