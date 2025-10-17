@@ -3,6 +3,9 @@
 [
   "luci-app-sms-tool-js"
   "luci-i18n-sms-tool-js-zh-cn"
+  "luci-app-travelmate"
+  "luci-i18n-travelmate-zh-cn"
+
   "luci-proto-modemmanager"
   "luci-proto-3g"
   "luci-proto-mbim"
