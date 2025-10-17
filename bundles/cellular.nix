@@ -10,6 +10,7 @@
   "luci-i18n-sms-tool-js-zh-cn"
   "luci-app-travelmate"
   "luci-i18n-travelmate-zh-cn"
+  "qrencode"
 
   "luci-proto-modemmanager"
   "luci-proto-3g"
@@ -28,9 +29,6 @@
   "kmod-usb-net-huawei-cdc-ncm"
   "kmod-usb-net-qmi-wwan"
   "kmod-usb-serial-option"
-  "kmod-usb-serial-qualcomm"
-  "kmod-usb-serial-wwan"
-  "kmod-wwan"
 ]
 ++ (lib.optionals quectel [
   "luci-proto-quectel"
