@@ -39,7 +39,7 @@ http://112.86.202.37:8112/JSBC_iptv/C10000040@JSBC
 http://112.86.202.37:8112/JSBC_iptv/C10000021@JSBC
 #EXTINF:-1 tvg-name="CGTN俄语" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/CGTN俄语.png" group-title="央视",CGTN-俄语
 http://112.86.202.37:8112/JSBC_iptv/C10000233@JSBC
-#EXTINF:-1 tvg-name="CGTN西班牙语" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/CGTN西班牙语.png" group-title="央视",CGTN-西班牙语
+#EXTINF:-1 tvg-name="CGTN西班牙语" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/CGTN西语.png" group-title="央视",CGTN-西班牙语
 http://122.97.211.133:8112/JSBC_iptv/C10000448@JSBC
 #EXTINF:-1 tvg-name="CGTN法语" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/CGTN法语.png" group-title="央视",CGTN-法语
 http://122.97.211.133:8112/JSBC_iptv/C10000449@JSBC
@@ -55,7 +55,7 @@ http://112.86.202.37:8112/JSBC_iptv/C10000435@JSBC
 http://112.86.202.37:8112/JSBC_iptv/C10000436@JSBC
 #EXTINF:-1 tvg-name="深圳卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/深圳卫视4K.png" group-title="4K",深圳卫视4K
 http://112.86.202.37:8112/JSBC_iptv/C10000438@JSBC
-#EXTINF:-1 tvg-name="江苏卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/江苏卫视4K.png" group-title="4K",江苏卫视4K  
+#EXTINF:-1 tvg-name="江苏卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/江苏卫视.png" group-title="4K",江苏卫视4K  
 http://112.86.202.37:8112/JSBC_iptv/C10000455@JSBC  
 #EXTINF:-1 tvg-name="浙江卫视4K" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/浙江卫视.png" group-title="4K",浙江卫视4K
 http://112.86.202.37:8112/JSBC_iptv/C10000457@JSBC
@@ -117,6 +117,8 @@ http://112.86.202.37:8112/JSBC_iptv/C10000171@JSBC
 http://112.86.202.37:8112/JSBC_iptv/C10000172@JSBC
 #EXTINF:-1 tvg-name="河南卫视" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/河南卫视.png" group-title="卫视",河南卫视
 http://112.86.202.37:8112/JSBC_iptv/C10000185@JSBC
+#EXTINF:-1 tvg-name="梨园频道" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/河南梨园.png" group-title="卫视",梨园频道
+http://112.86.202.37:8112/JSBC_iptv/C10000235@JSBC
 #EXTINF:-1 tvg-name="甘肃卫视" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/甘肃卫视.png" group-title="卫视",甘肃卫视
 http://112.86.202.37:8112/JSBC_iptv/C10000407@JSBC
 #EXTINF:-1 tvg-name="青海卫视" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/青海卫视.png" group-title="卫视",青海卫视
@@ -167,7 +169,7 @@ http://112.86.202.37:8112/JSBC_iptv/C10000099@JSBC
 http://112.86.202.37:8112/JSBC_iptv/C10000122@JSBC
 #EXTINF:-1 tvg-name="新闻综合" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/新闻综合.png" group-title="本地",新闻综合
 http://112.86.202.37:8112/JSBC_iptv/C10000128@JSBC
-#EXTINF:-1 tvg-name="十八·生活" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/十八·生活.png" group-title="本地",十八·生活
+#EXTINF:-1 tvg-name="十八·生活" tvg-logo="" group-title="本地",十八·生活
 http://112.86.202.37:8112/JSBC_iptv/C10000129@JSBC
 #EXTINF:-1 tvg-name="南京影视" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/南京影视.png" group-title="本地",南京影视
 http://112.86.202.37:8112/JSBC_iptv/C10000153@JSBC
@@ -185,8 +187,6 @@ http://112.86.202.37:8112/JSBC_iptv/C10000159@JSBC
 http://112.86.202.37:8112/JSBC_iptv/C10000142@JSBC
 #EXTINF:-1 tvg-name="优漫卡通" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/优漫卡通.png" group-title="数字",优漫卡通
 http://112.86.202.37:8112/JSBC_iptv/C10000228@JSBC
-#EXTINF:-1 tvg-name="梨园频道" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/梨园频道.png" group-title="数字",梨园频道
-http://112.86.202.37:8112/JSBC_iptv/C10000235@JSBC
 #EXTINF:-1 tvg-name="武术世界" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/武术世界.png" group-title="数字",武术世界
 http://112.86.202.37:8112/JSBC_iptv/C10000236@JSBC
 #EXTINF:-1 tvg-name="文物宝库" tvg-logo="https://raw.githubusercontent.com/fanmingming/live/refs/heads/main/tv/文物宝库.png" group-title="数字",文物宝库
