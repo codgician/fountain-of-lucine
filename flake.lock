@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765835352,
-        "narHash": "sha256-XswHlK/Qtjasvhd1nOa1e8MgZ8GS//jBoTqWtrS1Giw=",
+        "lastModified": 1767609335,
+        "narHash": "sha256-feveD98mQpptwrAEggBQKJTYbvwwglSbOv53uCfH9PY=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "a34fae9c08a15ad73f295041fec82323541400a9",
+        "rev": "250481aafeb741edfe23d29195671c19b36b6dca",
         "type": "github"
       },
       "original": {
@@ -28,11 +28,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1767465677,
-        "narHash": "sha256-GC+w8vSYcj21CE2lYqevSaa7JkG9n9jkh7s/Nk+UDg4=",
+        "lastModified": 1767682127,
+        "narHash": "sha256-ZBBVR51ZzzNZqSWHhiXw0Hn+5bq6oGk0imZhgdDYey0=",
         "owner": "codgician",
         "repo": "nix-immortalwrt-imagebuilder",
-        "rev": "a53bef7c45203ddf769f3b3a0e7356c2f41dca4f",
+        "rev": "6363f75b5738a8294809fa41b37c40a315f83da5",
         "type": "github"
       },
       "original": {
