@@ -29,7 +29,7 @@
 
   "aria2"
   "libopenssl-legacy"
-  "screen"
+  "tmux"
   "wget-ssl"
 ]
 ++ (lib.optionals (release == "snapshot" || lib.versionAtLeast release "24.00") [
