@@ -29,6 +29,7 @@
 
   "aria2"
   "libopenssl-legacy"
+  "tang"
   "tmux"
   "wget-ssl"
 ]
