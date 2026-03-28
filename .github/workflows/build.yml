@@ -73,6 +73,6 @@ jobs:
           file: "upload/*"
           overwrite: true
           update_latest_release: true
-          default_release_name: "Weekly build"
+          default_release_name: "Daily build"
           update_release_body: "${{ needs.setup.outputs.date }}"
           draft: false
