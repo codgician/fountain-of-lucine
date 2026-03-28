@@ -16,7 +16,6 @@
   "lscpu"
   "lsblk"
 
-  "postfix"
   "httping"
   "tcping"
   "pppoe-discovery"
