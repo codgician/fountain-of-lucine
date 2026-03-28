@@ -22,6 +22,8 @@
   "luci-i18n-wol-zh-cn"
   "luci-app-banip"
   "luci-i18n-banip-zh-cn"
+  "luci-app-nlbwmon"
+  "luci-i18n-nlbwmon-zh-cn"
   "luci-app-watchcat"
   "luci-i18n-watchcat-zh-cn"
   "luci-app-uhttpd"
