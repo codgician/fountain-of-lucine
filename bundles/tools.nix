@@ -19,7 +19,6 @@
   "postfix"
   "httping"
   "tcping"
-  "speedtest-cli"
   "pppoe-discovery"
   "tcpdump"
 

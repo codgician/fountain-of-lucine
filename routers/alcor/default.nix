@@ -12,7 +12,7 @@ let
   baremetal = true;
   target = "mediatek";
   variant = "filogic";
-  release = "24.10.5";
+  release = "25.12.0-rc1";
   packageLists = builtins.mapAttrs (
     k: v:
     v {
