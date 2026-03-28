@@ -21,6 +21,7 @@
   "kmod-nf-nat6"
   "kmod-nf-nathelper"
   "kmod-nf-nathelper-extra"
+  "kmod-nf-nathelper-rtsp"
   "kmod-nfnetlink"
   "kmod-nfnetlink-cthelper"
   "kmod-nfnetlink-cttimeout"
