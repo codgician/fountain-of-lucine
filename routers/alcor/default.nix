@@ -59,6 +59,7 @@ build {
 
   files = pkgs.runCommand "image-files" { } ''
     mkdir -p $out/etc
+    cp ${./rc.local} $out/etc/rc.local
     cp -r ${./sysctl.d}/. $out/etc/sysctl.d
 
     mkdir -p $out/etc/uci-defaults

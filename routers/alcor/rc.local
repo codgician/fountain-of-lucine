@@ -5,7 +5,4 @@
 rmmod nf_conntrack_netlink
 modprobe nf_conntrack_netlink
 
-# Make fan always running
-echo 1 > /sys/class/thermal/cooling_device0/cur_state
-
 exit 0

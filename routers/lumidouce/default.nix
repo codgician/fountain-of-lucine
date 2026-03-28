@@ -62,6 +62,7 @@ in
   files = pkgs.runCommand "image-files" { } ''
     mkdir -p $out/etc
     cp -r ${./hotplug.d}/. $out/etc/hotplug.d
+    cp ${./rc.local} $out/etc/rc.local
     cp -r ${./sysctl.d}/. $out/etc/sysctl.d
     cp -r ${./www}/. $out/www
 
