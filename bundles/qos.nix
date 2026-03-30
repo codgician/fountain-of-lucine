@@ -1,8 +1,6 @@
 { lib, release, ... }:
 
 [
-  "luci-app-appfilter"
-  "luci-i18n-appfilter-zh-cn"
   "luci-app-arpbind"
   "luci-i18n-arpbind-zh-cn"
   "luci-app-eqos"
