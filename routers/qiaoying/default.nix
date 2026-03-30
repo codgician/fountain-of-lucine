@@ -42,6 +42,7 @@ build {
     ++ common
     ++ collectd
     ++ iptv
+    ++ management
     ++ nas
     ++ proxy
     ++ qos
