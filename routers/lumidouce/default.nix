@@ -41,7 +41,6 @@ in
     apps
     ++ common
     ++ collectd
-    ++ management
     ++ proxy
     ++ qos
     ++ tools
