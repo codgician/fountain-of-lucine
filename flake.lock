@@ -28,11 +28,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1774688758,
-        "narHash": "sha256-TePaz7OpsQBCtpGPSjJvsxfFDT5dwve4MIWzDqYQip0=",
+        "lastModified": 1774949808,
+        "narHash": "sha256-+MDhMnqtU4yxZCXHTDLMLgSQOTaMqN2xCu0iN5Ej8hg=",
         "owner": "codgician",
         "repo": "nix-immortalwrt-imagebuilder",
-        "rev": "77c4e2163b3fef088925aceefb67354c6b8366ca",
+        "rev": "984dd3cff4b50c1b5b5ffd97c387d01698a06729",
         "type": "github"
       },
       "original": {
@@ -59,11 +59,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1774701658,
-        "narHash": "sha256-CIS/4AMUSwUyC8X5g+5JsMRvIUL3YUfewe8K4VrbsSQ=",
+        "lastModified": 1774855581,
+        "narHash": "sha256-YkreHeMgTCYvJ5fESV0YyqQK49bHGe2B51tH6claUh4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b63fe7f000adcfa269967eeff72c64cafecbbebe",
+        "rev": "15c6719d8c604779cf59e03c245ea61d3d7ab69b",
         "type": "github"
       },
       "original": {
