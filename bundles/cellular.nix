@@ -16,6 +16,7 @@
   "qrencode"
 
   "luci-proto-modemmanager"
+  "modemmanager-rpcd"
   "luci-proto-3g"
 
   "kmod-usb3"
