@@ -28,11 +28,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1779357110,
-        "narHash": "sha256-Y92wHV/frVn1Jv1GpgmPwPDGKr+J+4mRoWcJJxzoRxs=",
+        "lastModified": 1779443616,
+        "narHash": "sha256-E7uSAhCbqOXtZvnAm7kQqPjJqEwFuFHGNryxllZ3Lns=",
         "owner": "codgician",
         "repo": "nix-immortalwrt-imagebuilder",
-        "rev": "c0112cf76b1a5cd2735860e24499fd86dd1fdb94",
+        "rev": "5bfc55ed4fb76f5f321a99bc8ecf64de4a6971ba",
         "type": "github"
       },
       "original": {
@@ -59,12 +59,12 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1779259093,
-        "narHash": "sha256-7DKWmH23hL2eYdkxCKeqj2i+yljTKuU+3Nk1UPHOnxc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "d99b013d5d1931ad77fe3912ed218170dec5d9a4",
-        "type": "github"
+        "lastModified": 1778869304,
+        "narHash": "sha256-30sZNZoA1cqF5JNO9fVX+wgiQYjB7HJqqJ4ztCDeBZE=",
+        "rev": "d233902339c02a9c334e7e593de68855ad26c4cb",
+        "revCount": 998534,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/DeterminateSystems/nixpkgs-weekly/0.1.998534%2Brev-d233902339c02a9c334e7e593de68855ad26c4cb/019e3efc-e09a-7ff1-b05f-0c8f85ba7441/source.tar.gz"
       },
       "original": {
         "id": "nixpkgs",
