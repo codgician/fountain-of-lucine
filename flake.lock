@@ -28,11 +28,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1781172830,
-        "narHash": "sha256-A4AINcr8uHiiSQMvSjB9k7qmpYpz6Ic/G27CQYES/Xg=",
+        "lastModified": 1781259079,
+        "narHash": "sha256-21ikJLIZUSPFMPjweBDvqc+UUtKvQD97gHOPMLwY6bw=",
         "owner": "codgician",
         "repo": "nix-immortalwrt-imagebuilder",
-        "rev": "b84b55ac6ee08d57c6a398b250515d0380f8f574",
+        "rev": "6550415ed7b2a1a97a8446170b2228fe9287c8e8",
         "type": "github"
       },
       "original": {
