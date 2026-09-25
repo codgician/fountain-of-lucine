@@ -1,0 +1,4 @@
+# Restart DDNS when wan6 addresses change without an ifup (e.g. ISP renumbering)
+if [ "ifupdate" = "$ACTION" ] && [ "wan6" = "$INTERFACE" ] && [ -n "$IFUPDATE_ADDRESSES" ]; then
+    /etc/init.d/ddns restart
+fi
