@@ -74,6 +74,8 @@ in
     commit
     EOI
     EOF
+
+    cp ${./uci-defaults}/* $out/etc/uci-defaults
   '';
 }).overrideAttrs
   (
