@@ -65,6 +65,8 @@ in
     cp ${./rc.local} $out/etc/rc.local
     cp -r ${./sysctl.d}/. $out/etc/sysctl.d
     cp -r ${./www}/. $out/www
+    mkdir -p $out/usr/share
+    cp -r ${./nftables.d}/. $out/usr/share/nftables.d
 
     mkdir -p $out/etc/uci-defaults
     cat > $out/etc/uci-defaults/99-custom <<EOF
@@ -74,8 +76,6 @@ in
     commit
     EOI
     EOF
-
-    cp ${./uci-defaults}/* $out/etc/uci-defaults
   '';
 }).overrideAttrs
   (

@@ -1,0 +1,6 @@
+# HomeProxy marks router-originated packets whose destination is outside a
+# static reserved-address set. Replies to redirected connections (e.g. DNS
+# hijacked to dnsmasq) towards LAN hosts with delegated GUA prefixes get
+# marked and policy-routed into lo/TUN instead of back to the client.
+# Return reply-direction packets before HomeProxy's jump in this chain.
+ct direction reply counter return
