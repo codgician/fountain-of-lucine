@@ -1,13 +1,14 @@
 {
   inputs = {
-    immortalwrt-imagebuilder.url = "github:codgician/nix-immortalwrt-imagebuilder";
+    immortalwrt.url = "github:codgician/immortalwrt.nix";
+    nixpkgs.follows = "immortalwrt/nixpkgs";
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      immortalwrt-imagebuilder,
+      immortalwrt,
     }:
     let
       lib = nixpkgs.lib.extend (
@@ -35,8 +36,7 @@
             self
             name
             ;
-          inherit (immortalwrt-imagebuilder) profiles;
-          inherit (immortalwrt-imagebuilder.lib) build;
+          inherit (immortalwrt.legacyPackages.${pkgs.stdenv.hostPlatform.system}) channels;
         };
     in
     {

@@ -3,16 +3,17 @@
   name,
   pkgs,
   lib,
-  build,
   bundles,
+  channels,
   ...
 }:
 
 let
+  channel = channels."immortalwrt-25.12";
   baremetal = true;
   target = "mediatek";
   variant = "filogic";
-  release = "25.12.2";
+  release = channel.version;
   packageLists = builtins.mapAttrs (
     k: v:
     v {
@@ -26,14 +27,9 @@ let
     }
   ) bundles;
 in
-build {
-  inherit
-    release
-    target
-    variant
-    pkgs
-    ;
-  extraImageName = name;
+channel.mkImage {
+  inherit name;
+  target = "${target}/${variant}";
   profile = "bananapi_bpi-r3-mini";
   rootFsPartSize = 7384;
   packages =
