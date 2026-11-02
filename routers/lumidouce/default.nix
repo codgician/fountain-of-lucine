@@ -27,8 +27,8 @@ let
     }
   ) bundles;
 in
-(channel.mkImage {
-  inherit name;
+{
+  inherit channel;
   target = "${target}/${variant}";
   profile = "generic";
   rootFsPartSize = 896;
@@ -73,10 +73,11 @@ in
     EOI
     EOF
   '';
-}).overrideAttrs
-  (
-    selfAttrs: superAttrs: {
-      # Skip generating unneeded image formats
+
+  # Skip generating unneeded image formats
+  overrideImage =
+    image:
+    image.overrideAttrs {
       postConfigure = ''
         sed -i "s/CONFIG_TARGET_ROOTFS_EXT4FS=y/CONFIG_TARGET_ROOTFS_EXT4FS=n/g" ./.config
         sed -i "s/CONFIG_VHDX_IMAGES=y/CONFIG_VHDX_IMAGES=n/g" ./.config
@@ -85,5 +86,5 @@ in
         sed -i "s/CONFIG_VMDK_IMAGES=y/CONFIG_VMDK_IMAGES=n/g" ./.config
         sed -i "s/CONFIG_VDI_IMAGES=y/CONFIG_VDI_IMAGES=n/g" ./.config
       '';
-    }
-  )
+    };
+}

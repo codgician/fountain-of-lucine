@@ -29,8 +29,8 @@ let
     }
   ) bundles;
 in
-channel.mkImage {
-  inherit name;
+{
+  inherit channel;
   target = "${target}/${variant}";
   profile = "glinet_gl-xe3000";
   packages =
@@ -49,7 +49,6 @@ channel.mkImage {
       "luci-ssl"
       "kmod-mtd-rw"
       "mt7981-wo-firmware"
-      "kmod-mt76-sdio"
       "kmod-mt7915-firmware"
     ];
 

@@ -27,8 +27,8 @@ let
     }
   ) bundles;
 in
-channel.mkImage {
-  inherit name;
+{
+  inherit channel;
   target = "${target}/${variant}";
   profile = "bananapi_bpi-r3-mini";
   rootFsPartSize = 7384;
@@ -49,7 +49,6 @@ channel.mkImage {
       "kmod-mtd-rw"
       "kmod-sound-soc-mt7986"
       "kmod-sound-soc-mt7986-wm8960"
-      "kmod-mt76-sdio"
       "kmod-mt7915-firmware"
       "mmc-utils"
     ];

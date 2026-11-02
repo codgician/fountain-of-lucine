@@ -12,60 +12,125 @@ on:
 
 permissions:
   contents: write
- 
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+# Images are built from source by immortalwrt.nix in three stages, one job each so no job runs
+# into the 6 hour limit of hosted runners: the toolchain and the ImageBuilder (kernel and every
+# package) of each channel and target, then the images of each router. Every stage is pushed to
+# the immortalwrt Attic cache, so unchanged stages are substituted instead of rebuilt.
 jobs:
   setup:
     runs-on: ubuntu-latest
     outputs:
-      routers: ${{ steps.get_routers.outputs.routers }}
-      date: ${{ steps.get_routers.outputs.date }}
+      groups: ${{ steps.eval.outputs.groups }}
+      routers: ${{ steps.eval.outputs.routers }}
+      date: ${{ steps.eval.outputs.date }}
     steps:
-      - name: Clone 
-        uses: actions/checkout@v4
-      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: actions/checkout@v6
+      - uses: NixOS/nix-installer-action@main
+        with:
+          extra-conf: |
+            accept-flake-config = true
+            experimental-features = nix-command flakes
+      - name: Evaluate groups and routers
+        id: eval
+        run: |
+          {
+            echo "groups=$(nix eval .#legacyPackages.x86_64-linux.groups --apply 'x: builtins.toJSON (builtins.attrNames x)' --raw)"
+            echo "routers=$(nix eval .#packages.x86_64-linux --apply 'x: builtins.toJSON (builtins.attrNames x)' --raw)"
+            echo "date=$(date +'%Y-%m-%d')"
+          } >> "$GITHUB_OUTPUT"
+
+  toolchain:
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      matrix:
+        group: ${{ fromJson(needs.setup.outputs.groups) }}
+      fail-fast: false
+    steps:
+      - &free-disk-space
+        uses: thiagokokada/free-disk-space@main
+        continue-on-error: true
+        with:
+          tool-cache: true
+          usrlocal: true
+          usrmisc: true
+          opt: true
+          varcache: true
+      # The buildroot runs in a bubblewrap FHS view inside the Nix sandbox; Ubuntu blocks
+      # unprivileged user namespaces through AppArmor by default.
+      - &allow-userns
+        name: Allow nested user namespaces
+        run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+      - &checkout
+        uses: actions/checkout@v6
+      - &install-nix
+        uses: NixOS/nix-installer-action@main
         with:
           extra-conf: |
             accept-flake-config = true
             experimental-features = nix-command flakes
             builders-use-substitutes = true
-      - name: Get routers
-        id: get_routers
-        run: |
-          result=$(nix eval .#packages.x86_64-linux --apply "x: builtins.toJSON (builtins.attrNames x)" --raw)
-          echo "routers=${result}" >> $GITHUB_OUTPUT
-          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+            system-features = nixos-test benchmark big-parallel kvm
+      - &attic
+        name: Setup Attic cache
+        if: github.ref == 'refs/heads/main'
+        uses: ryanccn/attic-action@v0
+        with:
+          endpoint: https://cache.codgician.me
+          cache: immortalwrt
+          token: ${{ secrets.CACHE_PUSH_TOKEN }}
+          inputs-from: .
+      - name: Build toolchain for ${{ matrix.group }}
+        run: nix build -L '.#legacyPackages.x86_64-linux.groups."${{ matrix.group }}".toolchain'
 
-  build:
-    needs: setup
+  imagebuilder:
+    needs: [ setup, toolchain ]
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      matrix:
+        group: ${{ fromJson(needs.setup.outputs.groups) }}
+      fail-fast: false
+    steps:
+      - *free-disk-space
+      - *allow-userns
+      - *checkout
+      - *install-nix
+      - *attic
+      - name: Build ImageBuilder for ${{ matrix.group }}
+        run: nix build -L '.#legacyPackages.x86_64-linux.groups."${{ matrix.group }}".imagebuilder'
+
+  images:
+    needs: [ setup, imagebuilder ]
     runs-on: ubuntu-latest
     strategy:
-      matrix: 
+      matrix:
         router: ${{ fromJson(needs.setup.outputs.routers) }}
       fail-fast: false
     steps:
-      - name: Clone 
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: 'true'
-      - uses: DeterminateSystems/nix-installer-action@main
-        with:
-          extra-conf: |
-            accept-flake-config = true
-            experimental-features = nix-command flakes
-            builders-use-substitutes = true
+      - *free-disk-space
+      - *allow-userns
+      - *checkout
+      - *install-nix
+      - *attic
       - name: Build image for ${{ matrix.router }}
-        run: nix build .#${{ matrix.router }}
+        run: nix build -L .#${{ matrix.router }}
       - name: Rename files
         run: |
           mkdir -p ./upload
           cp -R ./result/* ./upload
-          if [ -f ./upload/sha256sums ]; then 
+          if [ -f ./upload/sha256sums ]; then
             mv ./upload/sha256sums ./upload/${{ matrix.router }}.sha256sums
           fi
-          if [ -f ./upload/profiles.json ]; then 
-            mv ./upload/profiles.json ./upload/${{ matrix.router }}.profiles.json 
+          if [ -f ./upload/profiles.json ]; then
+            mv ./upload/profiles.json ./upload/${{ matrix.router }}.profiles.json
           fi
       - name: Upload release for ${{ matrix.router }}
+        if: github.ref == 'refs/heads/main'
         uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

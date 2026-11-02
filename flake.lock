@@ -1,61 +1,15 @@
 {
   "nodes": {
-    "flake-parts": {
-      "inputs": {
-        "nixpkgs-lib": [
-          "immortalwrt",
-          "imagebuilder",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1772408722,
-        "narHash": "sha256-rHuJtdcOjK7rAHpHphUb1iCvgkU3GpfvicLMwwnfMT0=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "f20dc5d9b8027381c474144ecabc9034d6a839a3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
-    "imagebuilder": {
-      "inputs": {
-        "flake-parts": "flake-parts",
-        "nixpkgs": [
-          "immortalwrt",
-          "nixpkgs"
-        ],
-        "systems": "systems"
-      },
-      "locked": {
-        "lastModified": 1793461060,
-        "narHash": "sha256-Kz5UxYSKOBkdHWIXhKmgGu/otnHhTBK0SOict55bFGg=",
-        "owner": "codgician",
-        "repo": "nix-immortalwrt-imagebuilder",
-        "rev": "ac6e2221fcb552642588dea1ceb6636ea5cbde6e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "codgician",
-        "repo": "nix-immortalwrt-imagebuilder",
-        "type": "github"
-      }
-    },
     "immortalwrt": {
       "inputs": {
-        "imagebuilder": "imagebuilder",
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1793552467,
-        "narHash": "sha256-M/S/ZwR6j6/QzHBc/BimnqO+girpx6NqkNTEN6v5Jl0=",
+        "lastModified": 1793627181,
+        "narHash": "sha256-FJysQQ5eDkQx/j9caTtayQHCwvkUn1ZjnvD5WfVtrDg=",
         "owner": "codgician",
         "repo": "immortalwrt.nix",
-        "rev": "b7194046588684df8dbe6e4e64af3b498b7b256f",
+        "rev": "ef99b509a3c52bcaed49e4495a0ac7a0330e6352",
         "type": "github"
       },
       "original": {
@@ -87,21 +41,6 @@
           "immortalwrt",
           "nixpkgs"
         ]
-      }
-    },
-    "systems": {
-      "locked": {
-        "lastModified": 1680978846,
-        "narHash": "sha256-Gtqg8b/v49BFDpDetjclCYXm8mAnTrUzR0JnE2nv5aw=",
-        "owner": "nix-systems",
-        "repo": "x86_64-linux",
-        "rev": "2ecfcac5e15790ba6ce360ceccddb15ad16d08a8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "x86_64-linux",
-        "type": "github"
       }
     }
   },
