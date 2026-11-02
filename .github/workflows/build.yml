@@ -87,8 +87,11 @@ jobs:
       - name: Build toolchain for ${{ matrix.group }}
         run: nix build -L '.#legacyPackages.x86_64-linux.groups."${{ matrix.group }}".toolchain'
 
+  # A job is skipped when any leg of a job it needs failed; run anyway, so one failing group does
+  # not hold back the others (a group whose earlier stage failed retries it here and fails again).
   imagebuilder:
     needs: [ setup, toolchain ]
+    if: ${{ !cancelled() && needs.setup.result == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 360
     strategy:
@@ -106,6 +109,7 @@ jobs:
 
   images:
     needs: [ setup, imagebuilder ]
+    if: ${{ !cancelled() && needs.setup.result == 'success' }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
