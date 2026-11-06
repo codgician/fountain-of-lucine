@@ -1,0 +1,10 @@
+{
+	"luci-mod-status-index-battery": {
+		"description": "Grant access to battery status display",
+		"read": {
+			"ubus": {
+				"battery": [ "info" ]
+			}
+		}
+	}
+}

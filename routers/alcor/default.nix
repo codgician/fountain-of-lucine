@@ -64,12 +64,14 @@ in
     cp -r ${./sysctl.d}/. $out/etc/sysctl.d
     cp -r ${./hotplug.d}/. $out/etc/hotplug.d
 
-    # Battery: MCU poller, ubus object (rpcd plugin), enabled service
+    # Battery: MCU poller, ubus object (rpcd plugin), enabled service, LuCI status card
     install -Dm755 ${./battery/battery-monitor} $out/usr/sbin/battery-monitor
     install -Dm755 ${./battery/rpcd} $out/usr/libexec/rpcd/battery
     install -Dm755 ${./battery/battery.init} $out/etc/init.d/battery
     mkdir -p $out/etc/rc.d
     ln -s ../init.d/battery $out/etc/rc.d/S99battery
+    install -Dm644 ${./battery/15_battery.js} $out/www/luci-static/resources/view/status/include/15_battery.js
+    install -Dm644 ${./battery/acl.json} $out/usr/share/rpcd/acl.d/luci-mod-status-index-battery.json
 
     mkdir -p $out/etc/uci-defaults
     cat > $out/etc/uci-defaults/99-custom <<EOF
