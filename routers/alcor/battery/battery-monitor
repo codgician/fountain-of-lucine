@@ -1,0 +1,37 @@
+#!/bin/sh
+# Polls the XE3000 power-management MCU on ttyS1, keeps the latest reading in
+# /var/run/battery.json (served by the rpcd "battery" object) and runs
+# "hotplug-call battery" whenever the charge level or charging state changes.
+
+TTY=/dev/ttyS1
+STATE=/var/run/battery.json
+
+stty -F "$TTY" 9600 raw -echo || exit 1
+exec 3<>"$TTY"
+
+last=
+while :; do
+	printf '{ "mcu_status": "1" }\n' >&3
+
+	# Reply: {"code":0,"capacity":98,"temp":27,"chg_state":1,"charge_cycle":19}
+	# Anything else (e.g. the reply to power_off) is skipped.
+	code= soc= temp= chg= cycles=
+	read -r -t 2 line <&3 &&
+		eval "$(echo "$line" | jsonfilter -e 'code=@.code' -e 'soc=@.capacity' \
+			-e 'temp=@.temp' -e 'chg=@.chg_state' -e 'cycles=@.charge_cycle')"
+
+	if [ "$code" = 0 ] && [ -n "$soc" ] && [ -n "$chg" ]; then
+		charging=false
+		[ "$chg" = 0 ] || charging=true
+		printf '{ "soc": %d, "charging": %s, "temperature": %d, "cycles": %d }\n' \
+			"$soc" "$charging" "$temp" "$cycles" >"$STATE.tmp" && mv "$STATE.tmp" "$STATE"
+
+		if [ "$soc $charging" != "$last" ]; then
+			last="$soc $charging"
+			ACTION=change SOC="$soc" CHARGING="$([ "$charging" = true ] && echo 1 || echo 0)" \
+				TEMPERATURE="$temp" CYCLES="$cycles" /sbin/hotplug-call battery
+		fi
+	fi
+
+	sleep 3
+done

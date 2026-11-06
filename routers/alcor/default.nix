@@ -50,12 +50,23 @@ in
       "kmod-mtd-rw"
       "mt7981-wo-firmware"
       "kmod-mt7915-firmware"
+
+      # battery monitoring (battery/)
+      "coreutils-stty"
     ];
 
   files = pkgs.runCommand "image-files" { } ''
     mkdir -p $out/etc
     cp ${./rc.local} $out/etc/rc.local
     cp -r ${./sysctl.d}/. $out/etc/sysctl.d
+    cp -r ${./hotplug.d}/. $out/etc/hotplug.d
+
+    # Battery: MCU poller, ubus object (rpcd plugin), enabled service
+    install -Dm755 ${./battery/battery-monitor} $out/usr/sbin/battery-monitor
+    install -Dm755 ${./battery/rpcd} $out/usr/libexec/rpcd/battery
+    install -Dm755 ${./battery/battery.init} $out/etc/init.d/battery
+    mkdir -p $out/etc/rc.d
+    ln -s ../init.d/battery $out/etc/rc.d/S99battery
 
     mkdir -p $out/etc/uci-defaults
     cat > $out/etc/uci-defaults/99-custom <<EOF

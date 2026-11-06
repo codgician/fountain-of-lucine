@@ -1,0 +1,21 @@
+#!/bin/sh
+# ubus "battery" object: info returns the latest MCU reading, power_off asks
+# the XE3000 MCU to cut power.
+
+case "$1" in
+list)
+	echo '{ "info": {}, "power_off": {} }'
+	;;
+call)
+	case "$2" in
+	info)
+		cat /var/run/battery.json 2>/dev/null || echo '{ "error": true }'
+		;;
+	power_off)
+		logger -t battery -p daemon.notice "sending power_off to MCU"
+		printf '{ "power_off": "1" }\n' >/dev/ttyS1
+		echo '{}'
+		;;
+	esac
+	;;
+esac

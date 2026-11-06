@@ -1,0 +1,27 @@
+# Low-battery auto power-off for GL.iNet XE3000.
+# Called by battery-monitor via "hotplug-call battery" whenever SOC or charging
+# state changes. Env: ACTION=change SOC CHARGING(0/1) TEMPERATURE CYCLES.
+
+LOWBAT_SOC=10		# power off at or below this percentage while on battery
+LOWBAT_GRACE=60		# seconds to wait for a charger before powering off
+LOWBAT_LOCK=/var/run/lowbat-poweroff
+
+[ "$ACTION" = change ] && [ "$CHARGING" = 0 ] && [ "$SOC" -le "$LOWBAT_SOC" ] || exit 0
+
+# Only one pending shutdown at a time; runs detached so hotplug-call returns.
+mkdir "$LOWBAT_LOCK" 2>/dev/null || exit 0
+(
+	logger -t lowbat -p daemon.warn "battery at ${SOC}% and not charging; powering off in ${LOWBAT_GRACE}s unless a charger is connected"
+	sleep "$LOWBAT_GRACE"
+
+	eval "$(ubus call battery info | jsonfilter -e 'soc=@.soc' -e 'charging=@.charging')"
+	if [ "$charging" != 0 ] || [ -z "$soc" ] || [ "$soc" -gt "$LOWBAT_SOC" ]; then
+		logger -t lowbat -p daemon.notice "power-off cancelled (soc=${soc:-?}% charging=${charging:-?})"
+		rmdir "$LOWBAT_LOCK"
+		exit 0
+	fi
+
+	logger -t lowbat -p daemon.crit "battery at ${soc}%; powering off now"
+	sync
+	ubus call battery power_off
+) </dev/null >/dev/null 2>&1 &
