@@ -48,7 +48,6 @@ in
     apps
     ++ cellular
     ++ common
-    ++ mwan
     ++ collectd
     ++ proxy
     ++ qos
