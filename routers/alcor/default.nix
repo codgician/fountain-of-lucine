@@ -55,6 +55,9 @@ in
       "coreutils-stty"
     ];
 
+  # sms_led.sh (luci-app-sms-tool-js LED notifier) polls every second; SMS itself does not need it
+  disabledServices = [ "my_new_sms" ];
+
   files = pkgs.runCommand "image-files" { } ''
     mkdir -p $out/etc
     cp ${./rc.local} $out/etc/rc.local
