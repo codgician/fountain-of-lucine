@@ -1,4 +1,9 @@
-{ lib, release, ... }:
+{
+  lib,
+  release,
+  irqbalance ? true,
+  ...
+}:
 
 [
   "luci-app-autoreboot"
@@ -35,7 +40,7 @@
   "tmux"
   "wget-ssl"
 ]
-++ (lib.optionals (release == "snapshot" || lib.versionAtLeast release "24.00") [
+++ (lib.optionals (irqbalance && (release == "snapshot" || lib.versionAtLeast release "24.00")) [
   "luci-app-irqbalance"
   "luci-i18n-irqbalance-zh-cn"
 ])

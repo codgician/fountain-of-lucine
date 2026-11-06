@@ -26,6 +26,8 @@ let
         ;
       qmi = true;
       mhi = true;
+      # two cores; irqbalance only adds a periodic wakeup
+      irqbalance = false;
     }
   ) bundles;
 
