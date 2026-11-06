@@ -33,5 +33,7 @@ while :; do
 		fi
 	fi
 
-	sleep 3
+	# The MCU refreshes its readings roughly every 30 s; polling faster only
+	# costs wakeups (each round forks jsonfilter).
+	sleep 30
 done

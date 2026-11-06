@@ -1,0 +1,9 @@
+# Let the Quectel RM520N-GL's USB link runtime-suspend while idle. All of its
+# interfaces (option serial, qmi_wwan) support autosuspend, and traffic in
+# either direction resumes it (~1 s extra latency on the first packet).
+
+[ "$ACTION" = add ] && [ "$DEVTYPE" = usb_device ] || exit 0
+
+case "$PRODUCT" in
+2c7c/801/*) echo auto >"/sys$DEVPATH/power/control" ;;
+esac
