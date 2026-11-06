@@ -10,7 +10,7 @@ var callBatteryInfo = rpc.declare({
 });
 
 return baseclass.extend({
-	title: '电池',
+	title: _('Battery'),
 
 	load: function() {
 		return L.resolveDefault(callBatteryInfo(), {});
@@ -21,13 +21,13 @@ return baseclass.extend({
 			return null;
 
 		var fields = [
-			'电量', E('div', {
+			_('Charge'), E('div', {
 				'class': 'cbi-progressbar',
 				'title': '%d%%'.format(info.soc)
 			}, E('div', { 'style': 'width:%d%%'.format(info.soc) })),
-			'状态', info.charging ? '充电中' : '使用电池',
-			'温度', '%d °C'.format(info.temperature),
-			'循环次数', info.cycles
+			_('Status'), info.charging ? _('Charging') : _('On battery'),
+			_('Temperature'), '%d °C'.format(info.temperature),
+			_('Charge cycles'), info.cycles
 		];
 
 		var table = E('table', { 'class': 'table' });

@@ -1,0 +1,25 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: zh_Hans\n"
+
+msgid "Battery"
+msgstr "电池"
+
+msgid "Charge"
+msgstr "电量"
+
+msgid "Status"
+msgstr "状态"
+
+msgid "Charging"
+msgstr "充电中"
+
+msgid "On battery"
+msgstr "使用电池"
+
+msgid "Temperature"
+msgstr "温度"
+
+msgid "Charge cycles"
+msgstr "循环次数"

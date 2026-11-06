@@ -28,6 +28,16 @@ let
       mhi = true;
     }
   ) bundles;
+
+  # po2lmo from the channel's own LuCI feed, to compile translations of the files added here
+  po2lmo = pkgs.stdenv.mkDerivation {
+    pname = "po2lmo";
+    inherit (channel) version;
+    src = (lib.findFirst (feed: feed.name == "luci") (throw "no luci feed") channel.feeds).src;
+    dontConfigure = true;
+    buildPhase = "make -C modules/luci-base/src po2lmo";
+    installPhase = "install -Dm755 modules/luci-base/src/po2lmo $out/bin/po2lmo";
+  };
 in
 {
   inherit channel;
@@ -72,6 +82,8 @@ in
     ln -s ../init.d/battery $out/etc/rc.d/S99battery
     install -Dm644 ${./battery/15_battery.js} $out/www/luci-static/resources/view/status/include/15_battery.js
     install -Dm644 ${./battery/acl.json} $out/usr/share/rpcd/acl.d/luci-mod-status-index-battery.json
+    mkdir -p $out/usr/lib/lua/luci/i18n
+    ${po2lmo}/bin/po2lmo ${./battery/po/zh_Hans/battery.po} $out/usr/lib/lua/luci/i18n/battery.zh-cn.lmo
 
     mkdir -p $out/etc/uci-defaults
     cat > $out/etc/uci-defaults/99-custom <<EOF
